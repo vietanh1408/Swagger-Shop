@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Slider from 'react-slick'
 import Product from '../../../Products/components/Product'
-import productApi from './../../../../api/productApi'
 import './styles.scss'
 
 

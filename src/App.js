@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import './App.css'
+import './App.scss'
 import Header from './components/Header'
 import NotFound from './components/NotFound'
 import LogIn from './features/Auth/components/LogIn'

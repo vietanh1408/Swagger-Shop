@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import productApi from '../../api/productApi'
 import Banner from '../../components/Banner'
+import { getProducts } from '../Products/productSlice'
 import FlashDeal from './components/FlashDeal'
 import HomeBanner from './components/HomeBanner'
 import './styles.scss'
@@ -10,7 +12,11 @@ function Home() {
 
     const [productList, setProductList] = useState([])
 
+    const dispatch = useDispatch()
+
+
     useEffect(() => {
+        dispatch(getProducts())
         const fetchProductList = async () => {
             const response = await productApi.getAll()
             try {

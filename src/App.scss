@@ -5,6 +5,10 @@
     position: relative;
 }
 
+button {
+    outline: none !important;
+}
+
 .container {
     position: relative;
     max-width: 100%;

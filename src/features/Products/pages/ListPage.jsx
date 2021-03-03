@@ -62,12 +62,11 @@ const ListPage = () => {
                         <Paper elevation={3}>
                             <TopFilter />
                         </Paper>
-                        <Paper elevation={3}>
-                            {loading
-                                ? <ProductListSkeleton />
-                                : <ProductList data={productList} />
-                            }
-                        </Paper>
+
+                        {loading
+                            ? <ProductListSkeleton />
+                            : <ProductList data={productList} />
+                        }
                     </Grid>
                 </Grid>
             </div>
