@@ -1,0 +1,57 @@
+.app-container {
+    width: 76% !important;
+    margin: 0 auto !important;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{ 
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: #253237;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #b79b6c !important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+*, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 24px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100%;
+}
+
+.row {
+    height: 100%;
+}

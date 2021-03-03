@@ -1,0 +1,203 @@
+@media screen and (max-width: 960px) {
+    .flash-deal {
+
+        margin-top: 2.475rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        
+        &__left {
+            padding: 1.75rem;
+            background-color: #f5f5f5;
+
+            div {
+
+                margin-bottom: 1rem;
+
+                i {
+                    color: red;
+                    margin-right: 0.8rem;
+                }
+
+                span {
+                    color: red;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                }
+            }
+
+            h3 {
+                font-size: 2rem;
+                font-weight: 600;
+                line-height: 1;
+                margin-bottom: 35px;
+            }
+
+            p {
+                color: #707070;
+                margin-bottom: 45px;
+                font-size: 1rem;
+            }
+
+            &__time {
+
+                margin-bottom: 35px !important;
+                display: flex;
+                flex-wrap: wrap;
+
+
+                i {
+                    color: #1f1f1f !important;
+                    font-size: 3rem;
+                }
+
+                &-item {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 2rem;
+                    position: relative;
+
+                    &::after {
+                        content: ":";
+                        position: absolute;
+                        top: 0;
+                        right: -20px;
+                        color: black;
+                        font-weight: bold;
+
+                    }
+
+                    &:last-child::after {
+                        content: '';
+                    }
+
+                    span:first-child {
+                        font-size: 1.2rem;
+                        color: black !important;
+                    }
+
+                    span:nth-child(2) {
+                        font-size: 0.6rem;
+                        color: #707070;
+                    }
+                }
+            }
+
+            button {
+                outline: none;
+                border: none;
+                background-color: #253237;
+                color: white;
+                text-align: center;
+                width: 172px;
+                height: 50px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .flash-deal {
+
+        margin-top: 2.475rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        
+        &__left {
+            padding: 16.5rem 4rem;
+            background-color: #f5f5f5;
+
+            div {
+
+                margin-bottom: 1rem;
+
+                i {
+                    color: red;
+                    margin-right: 0.8rem;
+                }
+
+                span {
+                    color: red;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                }
+            }
+
+            h3 {
+                font-size: 2rem;
+                font-weight: 600;
+                line-height: 1;
+                margin-bottom: 35px;
+            }
+
+            p {
+                color: #707070;
+                margin-bottom: 45px;
+                font-size: 1rem;
+            }
+
+            &__time {
+
+                margin-bottom: 35px !important;
+                display: flex;
+                flex-wrap: wrap;
+
+
+                i {
+                    color: #1f1f1f !important;
+                    font-size: 3rem;
+                }
+
+                &-item {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 2rem;
+                    position: relative;
+
+                    &::after {
+                        content: ":";
+                        position: absolute;
+                        top: 0;
+                        right: -20px;
+                        color: black;
+                        font-weight: bold;
+
+                    }
+
+                    &:last-child::after {
+                        content: '';
+                    }
+
+                    span:first-child {
+                        font-size: 1.8rem;
+                        color: black !important;
+                    }
+
+                    span:nth-child(2) {
+                        font-size: 0.8rem;
+                        color: #707070;
+                    }
+                }
+            }
+
+            button {
+                outline: none;
+                border: none;
+                background-color: #253237;
+                color: white;
+                text-align: center;
+                width: 172px;
+                height: 50px;
+            }
+        }
+
+        &__right {
+            height: 100%;
+        }
+    }
+}

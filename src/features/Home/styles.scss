@@ -1,0 +1,29 @@
+@media screen and (max-width: 960px) {
+
+
+    .banner-box {
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .banner-box {
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            transition: 1s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+li {
+    button {
+        outline: none;
+        min-width: 24.5px !important;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+

@@ -1,0 +1,133 @@
+
+.header__setting-list__item {
+    cursor: pointer;
+    position: relative;
+    z-index: 999;
+    form {
+        position: absolute;
+        top: 140%;
+        right: 0;
+        width: 33.8rem;
+        height: 2.8rem;
+        background-color: #b79b6c;
+        border-radius: 30px;
+        overflow: hidden;
+        border: 2px solid #b79b6c;
+        
+        input {
+            flex: 5;
+            outline: none;
+            border: none;
+            padding: 0.5rem 1.375rem;
+            font-size: 0.9rem;
+
+            &::-webkit-input-placeholder {
+                color: #7a7a7a;
+            }
+        }
+        div {
+            flex:2;
+            background-color: white;
+            width: 100%;
+
+            select{ 
+                outline: none;
+                border: none;
+                height: 100%;
+                color: #253237;
+                font-size: 0.9rem;
+
+                option {
+                    font-weight: normal !important;
+                    display: block !important;
+                    white-space: pre !important;
+                    min-height: 1.2em !important;
+                    padding: 0px 2px 1px !important;
+                    width: 150% !important;
+                }
+            }
+        }
+        button {
+            flex: 1;
+            background-color: #b79b6c;
+            border: none;
+            color: white;
+            transition: 0.5s;
+            padding: 0 !important;
+
+            &:hover {
+                background-color: #253237;
+                border-color: #253237;
+            }
+        }
+    }
+
+    a {
+        color: black;
+    }
+
+    &:hover a {
+        color: #b79b6c;
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (max-width: 960px) {
+
+    .header__nav-right {
+        box-sizing: border-box;
+        flex-direction: row;
+    }
+
+    .header__nav-right__item {
+        display: none;
+    }
+
+    .header__nav-right__item-cart {
+        margin: 0 !important;
+        display: block;
+    }
+
+    .header__nav-right__item-setting {
+        margin: 0 !important;
+        display: block;
+        
+        button {
+            padding: 0 !important;
+        }
+    }
+
+    
+    .header {
+        position: relative;
+    }
+    .header__setting-list__item {
+
+        form {
+            top: 40%;
+            width: 20rem;
+            box-sizing: border-box;
+
+            input {
+                flex: 3;
+                width: 30px;
+                padding: 0.6rem;
+
+                &::-webkit-input-placeholder {
+                    color: #7a7a7a;
+                    font-size: 0.65rem;
+                }                
+            }
+
+            div {
+                flex: 1;
+            }
+
+            button {
+                flex: 1;
+                width: 10px;
+            }
+        }
+    }
+}
