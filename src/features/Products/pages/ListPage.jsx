@@ -1,10 +1,12 @@
+import { Box, Grid, makeStyles, Paper } from '@material-ui/core';
+import { unwrapResult } from '@reduxjs/toolkit';
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
-import ProductList from './../components/ProductList'
-import TopFilter from '../components/TopFilter';
-import productApi from './../../../api/productApi'
+import { useDispatch, useSelector } from 'react-redux';
 import ProductListSkeleton from '../components/ProductListSkeleton';
+import TopFilter from '../components/TopFilter';
+import { getProducts, searchProduct } from '../productSlice';
+import productApi from './../../../api/productApi';
+import ProductList from './../components/ProductList';
 
 
 const useStyles = makeStyles(theme => ({
@@ -23,23 +25,43 @@ const ListPage = () => {
 
     const classes = useStyles()
 
+    const searchKey = useSelector(state => state.product.searchKey)
+
     const [productList, setProductList] = useState([])
 
     const [loading, setLoading] = useState(true)
+
+    const [search, setSearch] = useState(searchKey)
+
+    const [filterProducts, setFilterProducts] = useState([])
+
+
 
     useEffect(() => {
         (async () => {
             try {
                 const response = await productApi.getAll()
-
                 setProductList(response)
             } catch (error) {
-                console.log(error)
+                console.log('error: ', error)
             }
 
+            console.log('2')
             setLoading(false)
+
         })()
     }, [])
+
+    useEffect(() => {
+
+        setFilterProducts(
+            productList.filter(product => {
+                return product.title.toLowerCase().includes(search.toLowerCase())
+            })
+        )
+
+        console.log('3')
+    }, [search, productList])
 
 
     return (
@@ -53,10 +75,14 @@ const ListPage = () => {
                 />
             </Box>
 
+
+
             <div className="container pt-5">
                 <Grid container spacing={3}>
                     <Grid item className={classes.filter}>
-                        <Paper elevation={3}>Filter</Paper>
+                        <Paper elevation={3}>
+                            <input type="text" onChange={(e) => setSearch(e.target.value)} />
+                        </Paper>
                     </Grid>
                     <Grid item className={classes.productList}>
                         <Paper elevation={3}>
@@ -65,7 +91,7 @@ const ListPage = () => {
 
                         {loading
                             ? <ProductListSkeleton />
-                            : <ProductList data={productList} />
+                            : <ProductList data={filterProducts} />
                         }
                     </Grid>
                 </Grid>

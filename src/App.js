@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.scss'
 import Header from './components/Header'
@@ -8,6 +8,7 @@ import Register from './features/Auth/components/Register'
 import Home from './features/Home'
 import Products from './features/Products'
 import ShoppingCart from './features/ShoppingCart'
+import { fb } from './service/firebase'
 
 function App() {
 
@@ -21,13 +22,25 @@ function App() {
     }
   }
 
-  window.onscroll = function () { scrollFunction() };
+  window.onscroll = function () { scrollFunction() }
 
   const handleBackToTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }
 
+  useEffect(() => {
+    fb.firestore
+      .collection('ecolifeUsers')
+      .where('userName', '==', 'vietanh1408')
+      .get()
+      .then(res => {
+        const users = res.docs[0]?.data()
+        console.log('users: ', users)
+      }).catch(error => {
+        console.log(error)
+      })
+  }, [])
 
   return (
     <div className="app">

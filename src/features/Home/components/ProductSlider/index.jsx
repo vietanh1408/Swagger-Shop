@@ -30,7 +30,7 @@ function ProductSlider({ productList }) {
         infinite: true,
         lazyLoad: true,
         speed: 500,
-        slidersToShow: 1,
+        slidersToShow: 3,
         centerMode: true,
         centerPadding: 0,
         nextArrow: <NextArrow />,
