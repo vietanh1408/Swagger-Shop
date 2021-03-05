@@ -63,7 +63,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                     <i className="fas fa-arrow-left" onClick={handleShowMenuMobile}></i>
                 </li>
                 <li className="header__menu-list__item" onClick={handleShowMenuMobile}>
-                    <NavLink to="/home" activeClassName="active">
+                    <NavLink to="/" activeClassName="active">
                         Home
                     </NavLink>
                 </li>
@@ -80,7 +80,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                     </NavLink>
                 </li>
                 <li className="header__menu-list__item header__menu-list__item-decorations">
-                    <NavLink to="/products">
+                    <NavLink to="/decorations">
                         Decorations
                         <div className="header__nav-left__menu-decorations">
                             <DecorationsMenu />

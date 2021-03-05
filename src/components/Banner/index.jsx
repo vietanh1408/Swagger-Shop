@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import contentBanner from './../../contants/ContentBanner'
 import ImgBanner from './ImgBanner'
 import './styles.scss'
@@ -29,7 +30,11 @@ function Banner() {
                         <div className="banner-content d-flex flex-column">
                             <h1>{item.title}</h1>
                             <p>{item.description}</p>
-                            <button>{item.button}</button>
+                            <Link to="/products">
+                                <button>
+                                    {item.button}
+                                </button>
+                            </Link>
                         </div>
                         <ImgBanner src={item.image} alt={item.title} />
                     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import './App.scss'
 import Header from './components/Header'
 import NotFound from './components/NotFound'
@@ -8,6 +8,8 @@ import Register from './features/Auth/components/Register'
 import Home from './features/Home'
 import Products from './features/Products'
 import ShoppingCart from './features/ShoppingCart'
+import { useAuth } from './hooks'
+import { useResolved } from './hooks/useResolved'
 import { fb } from './service/firebase'
 
 function App() {
@@ -42,6 +44,18 @@ function App() {
       })
   }, [])
 
+  const history = useHistory()
+
+  const { authUser } = useAuth()
+
+  const authResolved = useResolved(authUser)
+
+  useEffect(() => {
+    if (authResolved) {
+      history.push(!!authUser ? '/' : '/sign-in')
+    }
+  }, [authUser, authResolved, history])
+
   return (
     <div className="app">
       {/* header */}
@@ -51,7 +65,7 @@ function App() {
       {/* content */}
 
       <Switch>
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/sign-in" component={LogIn} />
         <Route path="/sign-up" component={Register} />
         <Route path="/cart" component={ShoppingCart} />

@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
 import productApi from '../../api/productApi'
+
 
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
     try {
@@ -30,6 +32,7 @@ const productSlice = createSlice({
     }
 
 })
+
 
 const { reducer, actions } = productSlice
 export const { searchProduct } = actions

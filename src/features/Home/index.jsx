@@ -12,11 +12,7 @@ function Home() {
 
     const [productList, setProductList] = useState([])
 
-    const dispatch = useDispatch()
-
-
     useEffect(() => {
-        dispatch(getProducts())
         const fetchProductList = async () => {
             const response = await productApi.getAll()
             try {

@@ -36,7 +36,6 @@ const ListPage = () => {
     const [filterProducts, setFilterProducts] = useState([])
 
 
-
     useEffect(() => {
         (async () => {
             try {
@@ -46,7 +45,6 @@ const ListPage = () => {
                 console.log('error: ', error)
             }
 
-            console.log('2')
             setLoading(false)
 
         })()
@@ -60,7 +58,6 @@ const ListPage = () => {
             })
         )
 
-        console.log('3')
     }, [search, productList])
 
 
