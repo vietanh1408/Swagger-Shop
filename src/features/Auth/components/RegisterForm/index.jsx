@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import InputField from '../../../../components/FormControl/InputField'
@@ -14,7 +14,7 @@ function RegisterForm(props) {
         lastName: yup.string().required('Please enter your last name !'),
         email: yup.string().email('Email is invalid !').required('Please enter your email !'),
         password: yup.string().min(6, 'Password must be 6 charactors at least !').required('Please enter your password !'),
-        birthDate: yup.string().required('Please enter your birthdate !')
+        phone: yup.string().required('Please enter your phonen number !')
     })
 
     const { register, handleSubmit, errors, reset } = useForm({
@@ -24,7 +24,7 @@ function RegisterForm(props) {
             lastName: '',
             email: '',
             password: '',
-            birthDate: '',
+            phone: '',
             checkbox3: false
         },
         resolver: yupResolver(schema)
@@ -33,8 +33,8 @@ function RegisterForm(props) {
     const [loader, showLoader, hideLoader] = useFullPageLoader()
 
     const onSubmit = (values, e) => {
-        const { onSubmit } = props
         showLoader()
+        const { onSubmit } = props
         setTimeout(() => {
             if (onSubmit) {
                 onSubmit(values)
@@ -82,7 +82,7 @@ function RegisterForm(props) {
                 <InputField errors={errors} inputRef={register} type="text" name="lastName" label="*Last name" />
                 <InputField errors={errors} inputRef={register} type="email" name="email" label="*Email" />
                 <InputField errors={errors} inputRef={register} type="password" name="password" label="*Password" />
-                <InputField errors={errors} inputRef={register} type="date" name="birthDate" label="*Birthdate" />
+                <InputField errors={errors} inputRef={register} type="phone" name="phone" label="*Phone" />
                 <InputField errors={errors}
                     inputRef={register} type="checkbox" name="checkbox1"
                     label="Receive offers from our partners" />

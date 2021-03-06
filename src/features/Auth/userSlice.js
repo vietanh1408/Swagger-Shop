@@ -5,12 +5,20 @@ import userApi from '../../api/userApi'
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        current: {},
+        current: JSON.parse(localStorage.getItem('CURRENT_USER')) || {},
         settings: {}
     },
-    reducers: {}
+    reducers: {
+        login: (state, action) => {
+            console.log('payload', action.payload)
+        }
+    },
+    extraReducers: {
+    }
 
 })
 
-const { reducer } = userSlice
+const { reducer, actions } = userSlice
+
+export const { login } = actions
 export default reducer

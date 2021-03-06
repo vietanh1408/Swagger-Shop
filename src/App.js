@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router-dom'
 import './App.scss'
 import Header from './components/Header'
 import NotFound from './components/NotFound'
 import LogIn from './features/Auth/components/LogIn'
 import Register from './features/Auth/components/Register'
+import { login } from './features/Auth/userSlice'
 import Home from './features/Home'
 import Products from './features/Products'
 import ShoppingCart from './features/ShoppingCart'
@@ -31,18 +33,20 @@ function App() {
     document.documentElement.scrollTop = 0
   }
 
-  useEffect(() => {
-    fb.firestore
-      .collection('ecolifeUsers')
-      .where('userName', '==', 'vietanh1408')
-      .get()
-      .then(res => {
-        const users = res.docs[0]?.data()
-        console.log('users: ', users)
-      }).catch(error => {
-        console.log(error)
-      })
-  }, [])
+
+
+  /*   useEffect(() => {
+      fb.firestore
+        .collection('ecolifeUsers')
+        .where('userName', '==', 'vietanh1408')
+        .get()
+        .then(res => {
+          const users = res.docs[0]?.data()
+          console.log('users: ', users)
+        }).catch(error => {
+          console.log(error)
+        })
+    }, []) */
 
   const history = useHistory()
 

@@ -25,29 +25,27 @@ const ListPage = () => {
 
     const classes = useStyles()
 
-    const searchKey = useSelector(state => state.product.searchKey)
-
     const [productList, setProductList] = useState([])
 
     const [loading, setLoading] = useState(true)
 
-    const [search, setSearch] = useState(searchKey)
+    const [search, setSearch] = useState('')
 
     const [filterProducts, setFilterProducts] = useState([])
 
+    const fetchProductsList = async () => {
+        try {
+            const response = await productApi.getAll()
+            setProductList(response)
+        } catch (error) {
+            console.log(error)
+        }
+        setLoading(false)
+    }
+
 
     useEffect(() => {
-        (async () => {
-            try {
-                const response = await productApi.getAll()
-                setProductList(response)
-            } catch (error) {
-                console.log('error: ', error)
-            }
-
-            setLoading(false)
-
-        })()
+        fetchProductsList()
     }, [])
 
     useEffect(() => {
@@ -71,8 +69,6 @@ const ListPage = () => {
                     width="100%"
                 />
             </Box>
-
-
 
             <div className="container pt-5">
                 <Grid container spacing={3}>

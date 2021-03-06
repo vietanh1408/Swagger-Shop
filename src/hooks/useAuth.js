@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { login } from '../features/Auth/userSlice'
 import { fb } from '../service/firebase'
 
 
@@ -6,7 +8,7 @@ export const useAuth = () => {
     const [authUser, setAuthUser] = useState()
 
     useEffect(() => {
-        const unsubcribe = fb.auth.onAuthStateChanged(user => {
+        const unsubscribe = fb.auth.onAuthStateChanged(user => {
             if (user) {
                 setAuthUser(user)
             } else {
@@ -14,7 +16,7 @@ export const useAuth = () => {
             }
         })
 
-        return unsubcribe
+        return unsubscribe
 
     }, [])
 
