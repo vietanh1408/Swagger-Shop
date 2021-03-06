@@ -11,6 +11,8 @@ function LogInForm(props) {
 
     const { serverError } = props
 
+    const [loader, showLoader, hideLoader] = useFullPageLoader()
+
     let schema = yup.object().shape({
         email: yup.string().email('Email is invalid !').required('Please enter your email !'),
         password: yup.string().min(6, 'Password must be 6 charactors at least !').required('Please enter your password !'),
@@ -24,9 +26,6 @@ function LogInForm(props) {
         resolver: yupResolver(schema)
     })
 
-
-
-    const [loader, showLoader, hideLoader] = useFullPageLoader()
 
     const onSubmit = (values) => {
         showLoader()

@@ -1,15 +1,18 @@
-import { Button, Menu, MenuItem } from '@material-ui/core'
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Menu, MenuItem } from '@material-ui/core'
 import Fade from '@material-ui/core/Fade'
 import TuneIcon from '@material-ui/icons/Tune'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { fb } from '../../../../../service/firebase'
 import './styles.scss'
 
 function SettingMenu() {
 
     const [anchorEl, setAnchorEl] = React.useState(null)
+    const [openSignOut, setOpenSignOut] = useState(false)
+    const [currentUser, setCurrentUser] = useState()
     const open = Boolean(anchorEl)
-
+    const user = fb.auth.currentUser
 
     const handleClose = () => {
         setAnchorEl(null)
@@ -17,8 +20,32 @@ function SettingMenu() {
 
     const handleToggleSettingMenu = (event) => {
         setAnchorEl(event.currentTarget)
-
     }
+
+    const handleClickOpen = () => {
+        setOpenSignOut(true);
+    };
+
+    const handleCloseSignOut = () => {
+        setOpenSignOut(false);
+    };
+
+    const handleLogOut = () => {
+        fb.auth.signOut().then(res => {
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    useEffect(() => {
+
+        if (!!user) {
+            setCurrentUser(true)
+        } else {
+            setCurrentUser(false)
+        }
+    }, [user])
+
 
     return (
         <>
@@ -50,31 +77,49 @@ function SettingMenu() {
                 }}
                 getContentAnchorEl={null}
             >
-                <MenuItem onClick={handleClose} className="d-flex">
-                    <ul>
-                        <li>Language</li>
-                        <li>
-                            <img src="http://demo.posthemes.com/pos_ecolife_decoration/decoration3/img/l/1.jpg" alt="english" />
-                            English
-                        </li>
-                        <li>
-                            <img src="http://demo.posthemes.com/pos_ecolife_decoration/decoration3/img/l/2.jpg" alt="francais" />
-                            Français
-                        </li>
-                    </ul>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link to="/sign-in" className="text-decoration-none" color="primary">
-                        Sign in
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link to="/sign-up" className="text-decoration-none" color="primary">
-                        Sign up
-                    </Link>
-                </MenuItem>
-            </Menu>
+                {currentUser === true
+                    ? <Box>
+                        <MenuItem>{user?.email}</MenuItem>
 
+                        <div>
+                            <MenuItem onClick={handleClickOpen}>Log out</MenuItem>
+                            <Dialog
+                                open={openSignOut}
+                                onClose={handleCloseSignOut}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">Are you sure ?</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText id="alert-dialog-description">
+                                        Are you sure that you want to sign out ?
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleLogOut} color="primary">
+                                        Sign out
+                                    </Button>
+                                    <Button onClick={handleCloseSignOut} color="primary" autoFocus>
+                                        Cancel
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+                    </Box>
+                    : <Box>
+                        <MenuItem onClick={handleClose}>
+                            <Link to="/sign-in" className="text-decoration-none" color="primary">
+                                Sign in
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                            <Link to="/sign-up" className="text-decoration-none" color="primary">
+                                Sign up
+                            </Link>
+                        </MenuItem>
+                    </Box>
+                }
+            </Menu>
         </>
     )
 }
