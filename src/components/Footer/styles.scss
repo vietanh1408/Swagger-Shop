@@ -1,0 +1,30 @@
+
+.footer {
+    margin-top: 2rem;
+    padding: 2rem;
+
+    &-heading {
+        margin-bottom: 2rem;
+    }
+
+    &-list-item {
+        margin-bottom: 1rem;
+        transition: 1s;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+            color: #b79b6c;
+            transform: translateX(1rem);
+            transition: transform 0.5s;
+        }
+    }
+
+    &-form {
+        display: flex;
+
+        button {
+            padding: 0;
+        }
+    }
+}

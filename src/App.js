@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router-dom'
 import './App.scss'
+import Footer from './components/Footer'
 import Header from './components/Header'
 import NotFound from './components/NotFound'
 import LogIn from './features/Auth/components/LogIn'
@@ -79,7 +80,7 @@ function App() {
 
 
       {/* footer */}
-      <div style={{ height: '1000px', backgroundColor: 'gray' }}></div>
+      <Footer />
 
       {/* btn back to top */}
       {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>}

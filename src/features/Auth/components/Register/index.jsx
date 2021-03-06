@@ -1,16 +1,8 @@
-import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { register } from '../../userSlice'
 import RegisterForm from '../RegisterForm'
 import { fb } from './../../../../service/firebase'
 
 function Register() {
-
-    const history = useHistory()
-
-    const dispatch = useDispatch()
 
     const [serverError, setServerError] = useState('')
 
@@ -19,13 +11,23 @@ function Register() {
             .createUserWithEmailAndPassword(values.email, values.password)
             .then(res => {
                 console.log(res)
+            }).catch(err => {
+                console.log(err)
+                if (err.code === 'auth/wrong-password') {
+                    setServerError('Invalid credentials')
+                } else if (err.code === 'auth/user-not-found') {
+                    setServerError('No account for this email')
+                } else {
+                    setServerError('Something went wrong :(')
+                }
             })
     }
 
     return (
         <div className="register">
             <div className="container">
-                <h1 className="register__heading">Create an account</h1>
+                <h1 className="register__heading mb-4">Create an account</h1>
+                <span>{serverError}</span>
                 <RegisterForm onSubmit={onSubmit} />
             </div>
         </div>
