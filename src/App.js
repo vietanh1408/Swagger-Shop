@@ -5,11 +5,13 @@ import './App.scss'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import NotFound from './components/NotFound'
+import Account from './features/Account'
 import LogIn from './features/Auth/components/LogIn'
 import Register from './features/Auth/components/Register'
 import { login } from './features/Auth/userSlice'
 import Home from './features/Home'
 import Products from './features/Products'
+import { getProducts } from './features/Products/productSlice'
 import ShoppingCart from './features/ShoppingCart'
 import { useAuth } from './hooks'
 import { useResolved } from './hooks/useResolved'
@@ -17,7 +19,7 @@ import { fb } from './service/firebase'
 
 function App() {
 
-  const [showBtn, setShowBtn] = useState(false)
+  /* const [showBtn, setShowBtn] = useState(false)
 
   const scrollFunction = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -32,8 +34,7 @@ function App() {
   const handleBackToTop = () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-  }
-
+  } */
 
 
   /*   useEffect(() => {
@@ -49,6 +50,8 @@ function App() {
         })
     }, []) */
 
+  const dispatch = useDispatch()
+
   const history = useHistory()
 
   const { authUser } = useAuth()
@@ -60,6 +63,21 @@ function App() {
       history.push(!!authUser ? '/' : '/sign-in')
     }
   }, [authUser, authResolved, history])
+
+  useEffect(() => {
+    fb.auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log('user logged in: ', user.email)
+      } else {
+        console.log('user logged out')
+      }
+    })
+
+    const action = getProducts()
+    dispatch(action)
+  }, [])
+
+
 
   return (
     <div className="app">
@@ -75,6 +93,7 @@ function App() {
         <Route path="/sign-up" component={Register} />
         <Route path="/cart" component={ShoppingCart} />
         <Route path="/products" component={Products} />
+        <Route path="/account" component={Account} />
         <Route component={NotFound} />
       </Switch>
 
@@ -82,8 +101,8 @@ function App() {
       {/* footer */}
       <Footer />
 
-      {/* btn back to top */}
-      {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>}
+      {/* btn back to top */}{/* 
+      {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>} */}
     </div>
   )
 }

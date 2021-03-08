@@ -9,18 +9,17 @@ import './styles.scss'
 
 function Home() {
 
-
     const [productList, setProductList] = useState([])
 
-    useEffect(() => {
-        const fetchProductList = async () => {
-            const response = await productApi.getAll()
-            try {
-                setProductList(response)
-            } catch (error) {
-                console.log('ERROR: ', error)
-            }
+    const fetchProductList = async () => {
+        const response = await productApi.getAll()
+        try {
+            /* setProductList(response) */
+        } catch (error) {
+            console.log('ERROR: ', error)
         }
+    }
+    useEffect(() => {
         fetchProductList()
     }, [])
 

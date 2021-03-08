@@ -23,17 +23,18 @@ const useStyles = makeStyles(theme => ({
 
 const ListPage = () => {
 
+    const [loading, setLoading] = useState(true)
     const classes = useStyles()
 
-    const [productList, setProductList] = useState([])
-
-    const [loading, setLoading] = useState(true)
 
     const [search, setSearch] = useState('')
 
     const [filterProducts, setFilterProducts] = useState([])
 
-    const fetchProductsList = async () => {
+    const products = useSelector(state => state.product.list)
+    const [productList, setProductList] = useState(products)
+
+    /* const fetchProductsList = async () => {
         try {
             const response = await productApi.getAll()
             setProductList(response)
@@ -46,6 +47,13 @@ const ListPage = () => {
 
     useEffect(() => {
         fetchProductsList()
+    }, []) */
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
     }, [])
 
     useEffect(() => {

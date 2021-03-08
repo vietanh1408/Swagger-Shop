@@ -25,7 +25,6 @@ function LogIn() {
             })
     }
 
-
     return (
         <div className="log-in">
             <div className="container">

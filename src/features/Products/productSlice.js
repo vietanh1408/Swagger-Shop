@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux'
 import productApi from '../../api/productApi'
 
 
