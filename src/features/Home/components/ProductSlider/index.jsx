@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Slider from 'react-slick'
 import Product from '../../../Products/components/Product'
 import './styles.scss'
 
 
 
-function ProductSlider({ productList }) {
+function ProductSlider() {
+
+    const productList = useSelector(state => state.product.list)
 
 
     const NextArrow = ({ onClick }) => {
@@ -42,7 +45,7 @@ function ProductSlider({ productList }) {
     return (
         <div className="product-carousel">
             <Slider {...settings}>
-                {productList.map((product, index) => (
+                {productList?.map((product, index) => (
                     <div key={index} className={index === productIndex ? 'slide activeSlide' : 'slide'}>
                         <Product product={product} />
                     </div>

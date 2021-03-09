@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import { searchProduct } from '../../../../../features/Products/productSlice'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 
 
 function SearchBar({ showSearchBar, isScreenMobile }) {
@@ -9,6 +10,8 @@ function SearchBar({ showSearchBar, isScreenMobile }) {
     const dispatch = useDispatch()
 
     const [searchTerm, setSearchTerm] = useState('')
+
+    const history = useHistory()
 
     const typingTimeoutRef = useRef(null)
 
@@ -28,6 +31,7 @@ function SearchBar({ showSearchBar, isScreenMobile }) {
         e.preventDefault()
         const action = searchProduct(searchTerm)
         dispatch(action)
+        history.push('/products')
     }
 
     return (

@@ -3,7 +3,7 @@ import ProductSlider from '../ProductSlider'
 import Clock from './Clock'
 import './styles.scss'
 
-function FlashDeal({ productList }) {
+function FlashDeal() {
 
     return (
         <div className="flash-deal">
@@ -23,7 +23,7 @@ function FlashDeal({ productList }) {
                     </div>
                     <div className="col col-md-6 col-12">
                         <div className="flash-deal__right">
-                            <ProductSlider productList={productList} />
+                            <ProductSlider />
                         </div>
                     </div>
                 </div>

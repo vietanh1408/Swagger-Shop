@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import productApi from '../../api/productApi'
+import React from 'react'
 import Banner from '../../components/Banner'
-import { getProducts } from '../Products/productSlice'
 import FlashDeal from './components/FlashDeal'
 import HomeBanner from './components/HomeBanner'
 import './styles.scss'
 
 function Home() {
-
-    const [productList, setProductList] = useState([])
-
-    const fetchProductList = async () => {
-        const response = await productApi.getAll()
-        try {
-            /* setProductList(response) */
-        } catch (error) {
-            console.log('ERROR: ', error)
-        }
-    }
-    useEffect(() => {
-        fetchProductList()
-    }, [])
 
     return (
         <section id="home-page">
@@ -32,7 +15,7 @@ function Home() {
             <HomeBanner />
 
             {/* flash deal */}
-            <FlashDeal productList={productList} />
+            <FlashDeal />
 
         </section>
     )
