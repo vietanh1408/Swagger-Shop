@@ -2,7 +2,9 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, D
 import Fade from '@material-ui/core/Fade'
 import TuneIcon from '@material-ui/icons/Tune'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logout } from '../../../../../features/Auth/userSlice'
 import { fb } from '../../../../../service/firebase'
 import './styles.scss'
 
@@ -11,6 +13,7 @@ function SettingMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null)
     const [openSignOut, setOpenSignOut] = useState(false)
     const [currentUser, setCurrentUser] = useState()
+    const dispatch = useDispatch()
     const open = Boolean(anchorEl)
     const user = fb.auth.currentUser
 
@@ -32,6 +35,7 @@ function SettingMenu() {
 
     const handleLogOut = () => {
         fb.auth.signOut().then(res => {
+            dispatch(logout())
         }).catch(err => {
             console.log(err)
         })

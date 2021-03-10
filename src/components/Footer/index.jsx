@@ -11,7 +11,7 @@ function Footer() {
                 <div className="row">
                     {CONTENT_FOOTER?.map((contentFooter, index) => {
                         return (
-                            <div className="col col-xs-12 col-sm-6 col-md-3 col-lg-3" key={index}>
+                            <div className="col col-12 col-sm-6 col-md-3 col-lg-3" key={index}>
                                 <h6 className="footer-heading">{contentFooter.title}</h6>
                                 <ul className="footer-list">
                                     {contentFooter.list?.map((contentList, index) => {
@@ -25,7 +25,7 @@ function Footer() {
                             </div>
                         )
                     })}
-                    <div className="col col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <div className="col col-12 col-sm-6 col-md-3 col-lg-3">
                         <h6 className="footer-heading">NEWSLETTER</h6>
                         <p>Be the first to know about our new arrivals and exclusive offers.</p>
                         <form className="footer-form">
@@ -41,7 +41,7 @@ function Footer() {
                 <div className="row">
                     <div className="col">
                         <div className="footer-logo d-flex justify-content-center my-5">
-                            <img src="http://demo.posthemes.com/pos_ecolife_decoration/img/cms/payment.png" alt="footer-logo"></img>
+                            <img src="http://demo.posthemes.com/pos_ecolife_decoration/img/cms/payment.png" alt="footer-logo" className="w-100"></img>
                         </div>
                     </div>
                 </div>

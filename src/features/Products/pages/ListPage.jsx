@@ -1,11 +1,10 @@
 import { Box, Grid, makeStyles, Paper } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LeftFilter from '../components/LeftFilter';
-import ProductListSkeleton from '../components/ProductListSkeleton';
 import TopFilter from '../components/TopFilter';
+import { getProducts } from '../productSlice';
 import ProductList from './../components/ProductList';
-
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -16,48 +15,49 @@ const useStyles = makeStyles(theme => ({
 
     productList: {
         flex: '1 1 0'
+    },
+
+    productEmpty: {
+        marginTop: '2rem',
+        '& p': {
+            fontWeight: 'bold'
+        }
     }
 }))
 
 const ListPage = () => {
 
-    const [loading, setLoading] = useState(true)
-
-    const classes = useStyles()
-
-    const [search, setSearch] = useState('')
-
-    const [filterProducts, setFilterProducts] = useState([])
-
-    const products = useSelector(state => state.product.list)
-
-    const [productList, setProductList] = useState(products)
-
-    const searchKey = useSelector(state => state.product.searchKey)
+    const classes = useStyles();
+    const [sort, setSort] = useState(0)
+    const dispatch = useDispatch()
+    const productList = useSelector(state => state.product.list)
+    const search = useSelector(state => state.product.searchKey)
 
     const handleInputSearchChange = (e) => {
-        setSearch(e.target.value)
+
+    }
+
+    const renderData = () => {
+        dispatch(getProducts({ search, sort }));
+    }
+
+    const handleSortBy = (value) => {
+        setSort(value)
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000)
-    }, [])
+        renderData()
+    }, [search, sort])
 
     useEffect(() => {
-        setFilterProducts(
-            productList.filter(product => {
-                return product.title.toLowerCase().includes(search.toLowerCase())
-            })
-        )
-    }, [search, productList])
+        if (!productList) {
+            dispatch(getProducts({ search, sort }))
+        }
+    }, [productList])
 
-    useEffect(() => {
-        setSearch(searchKey)
-    }, [searchKey])
 
     return (
+
         <Box>
             {/* banner */}
             <Box>
@@ -67,7 +67,6 @@ const ListPage = () => {
                     width="100%"
                 />
             </Box>
-
             <div className="container pt-5">
                 <Grid container spacing={3}>
                     <Grid item className={classes.filter}>
@@ -77,13 +76,9 @@ const ListPage = () => {
                     </Grid>
                     <Grid item className={classes.productList}>
                         <Paper elevation={3}>
-                            <TopFilter />
+                            <TopFilter productsLength={productList?.length} handleSortBy={handleSortBy} />
                         </Paper>
-
-                        {loading
-                            ? <ProductListSkeleton />
-                            : <ProductList data={filterProducts} />
-                        }
+                        <ProductList data={productList} />
                     </Grid>
                 </Grid>
             </div>

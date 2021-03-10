@@ -1,6 +1,7 @@
 import { Box, IconButton, makeStyles, Paper, Typography } from '@material-ui/core'
 import React from 'react'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -56,7 +57,9 @@ function Product({ product }) {
                         width="50%"
                     />
                 </Box>
-                <Typography variant="h6" className={classes.title}>{product.title}</Typography>
+                <Link to={`/products/${product.id}`}>
+                    <Typography variant="h6" className={classes.title}>{product.title}</Typography>
+                </Link>
 
                 <Box component="div" display="flex" justifyContent="space-between" width="100%" alignItems="center">
                     <IconButton className={classes.btn}>

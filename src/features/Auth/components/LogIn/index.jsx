@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { fb } from '../../../../service/firebase'
 import LogInForm from '../LogInForm'
 
@@ -24,6 +24,9 @@ function LogIn() {
                 }
             })
     }
+
+    useEffect(() => {
+    }, [serverError])
 
     return (
         <div className="log-in">

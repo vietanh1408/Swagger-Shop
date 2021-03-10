@@ -13,6 +13,7 @@ import Home from './features/Home'
 import Products from './features/Products'
 import { getProducts } from './features/Products/productSlice'
 import ShoppingCart from './features/ShoppingCart'
+import WishList from './features/WishList'
 import { useAuth } from './hooks'
 import { useResolved } from './hooks/useResolved'
 import { fb } from './service/firebase'
@@ -60,7 +61,7 @@ function App() {
 
   useEffect(() => {
     if (authResolved) {
-      history.push(!!authUser ? '/' : '/sign-in')
+      history.push(!!authUser === false && '/sign-in')
     }
   }, [authUser, authResolved, history])
 
@@ -68,13 +69,12 @@ function App() {
     fb.auth.onAuthStateChanged(user => {
       if (user) {
         console.log('user logged in: ', user.email)
+        dispatch(login(user.email))
       } else {
         console.log('user logged out')
       }
     })
-
-    const action = getProducts()
-    dispatch(action)
+    /* dispatch(getProducts()) */
   }, [])
 
 
@@ -94,6 +94,7 @@ function App() {
         <Route path="/cart" component={ShoppingCart} />
         <Route path="/products" component={Products} />
         <Route path="/account" component={Account} />
+        <Route path="/wishlist" component={WishList} />
         <Route component={NotFound} />
       </Switch>
 

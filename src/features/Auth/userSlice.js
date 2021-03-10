@@ -10,7 +10,11 @@ const userSlice = createSlice({
     },
     reducers: {
         login: (state, action) => {
-            console.log('payload', action.payload)
+            localStorage.setItem('CURRENT_USER', JSON.stringify(action.payload))
+        },
+        logout: (state, action) => {
+            localStorage.removeItem('CURRENT_USER')
+            state.current = {}
         }
     },
     extraReducers: {
@@ -19,5 +23,5 @@ const userSlice = createSlice({
 })
 
 const { reducer, actions } = userSlice
-export const { login } = actions
+export const { login, logout } = actions
 export default reducer

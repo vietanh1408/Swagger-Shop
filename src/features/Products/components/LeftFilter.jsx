@@ -52,7 +52,7 @@ function LeftFilter({ onChange }) {
     const classes = useStyles()
 
     return (
-        <div className={classes.root}>
+        <form className={classes.root}>
             <div className={classes.search}>
                 <div className={classes.searchIcon}>
                     <SearchIcon />
@@ -68,7 +68,7 @@ function LeftFilter({ onChange }) {
                 />
 
             </div>
-        </div>
+        </form>
     )
 }
 
