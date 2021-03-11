@@ -1,8 +1,5 @@
-
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import DecoMenu from './DecoMenu'
-import DecorationsMenu from './DecorationsMenu'
+import { Link, NavLink } from 'react-router-dom'
 import './styles.scss'
 
 
@@ -11,7 +8,6 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
     const screenWidth = window.innerWidth
 
     const [isScreenMobile, setIsScreenMobile] = useState(false)
-
 
     useEffect(() => {
         if (screenWidth <= 960) {
@@ -38,6 +34,15 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
         setMinusIcon(true)
     }
 
+    const handleShowProductsMenu = () => {
+        const productsMenu = document.querySelector('.header__nav-left__menu-decorations')
+        productsMenu.style.display = 'block'
+    }
+
+    const handleHideProductMenu = () => {
+        const productsMenu = document.querySelector('.header__nav-left__menu-decorations')
+        productsMenu.style.display = 'none'
+    }
 
 
     return (
@@ -63,10 +68,10 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                     <i className="fas fa-arrow-left" onClick={handleShowMenuMobile}></i>
                 </li>
                 <li className="header__menu-list__item" onClick={handleShowMenuMobile}>
-                    <NavLink to="/" activeClassName="active">
+                    <NavLink exact to="/" activeClassName="active">
                         Home
                     </NavLink>
-                </li>
+                </li>{/* 
                 <li className="header__menu-list__item header__menu-list__item-deco" onClick={handleShowDecoMenu}>
                     <NavLink to="/products">
                         Deco
@@ -78,15 +83,33 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                         }
                         {!isScreenMobile ? (<i className="fas fa-angle-down"></i>) : (<i className={!minusIcon ? "fas fa-plus" : "fas fa-minus"}></i>)}
                     </NavLink>
-                </li>
+                </li> */}
                 <li className="header__menu-list__item header__menu-list__item-decorations">
-                    <NavLink to="/decorations">
-                        Decorations
-                        <div className="header__nav-left__menu-decorations">
-                            <DecorationsMenu />
-                        </div>
-                        {!isScreenMobile ? (<i className="fas fa-angle-down"></i>) : (<i className="fas fa-plus"></i>)}
+                    <NavLink to="/products"
+                        onMouseOver={handleShowProductsMenu}
+                        onMouseLeave={handleHideProductMenu}
+                        onClick={handleShowProductsMenu}
+                    >
+                        Products
+                        {/* {!isScreenMobile ? (<i className="fas fa-angle-down"></i>) : (<i className="fas fa-plus"></i>)} */}
                     </NavLink>
+                    <ul
+                        className="header__nav-left__menu-decorations"
+                        onMouseOver={handleShowProductsMenu}
+                        onMouseLeave={handleHideProductMenu}>
+                        <li>
+                            <Link to="/products/category/men clothing">Men clothing</Link>
+                        </li>
+                        <li>
+                            <Link to="/products/category/jewelery">jewelery</Link>
+                        </li>
+                        <li>
+                            <Link to="/products/category/women clothing">Women clothing</Link>
+                        </li>
+                        <li>
+                            <Link to="/products/category/electronics">Electronics</Link>
+                        </li>
+                    </ul>
                 </li>
                 <li className="header__menu-list__item" onClick={handleShowMenuMobile}>
                     <NavLink to="/contact">

@@ -11,14 +11,24 @@ const useStyles = makeStyles(theme => ({
 
     heading: {
         marginBottom: '0 !important',
-        display: 'flex',
-        alignItems: 'center'
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'flex',
+            alignItems: 'center'
+        }
     },
 
     sortBy: {
         display: 'flex',
         alignItems: 'center',
-        position: 'relative'
+        justifyContent: 'space-between',
+        position: 'relative',
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            display: 'flex',
+            alignItems: 'center',
+            width: '30%',
+        }
     },
 
     btnSort: {
@@ -26,9 +36,8 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid #363636',
         borderRadius: '10px',
         outline: 'none',
-        width: '300px',
+        width: '100%',
         height: '30px',
-        marginLeft: '1rem',
         padding: '0 1rem',
         display: 'flex',
         justifyContent: 'space-between',
@@ -58,24 +67,6 @@ const useStyles = makeStyles(theme => ({
         },
     }
 }))
-
-const listSort = [
-    {
-        value: '0', lable: 'Default'
-    },
-    {
-        value: '1', lable: 'A->Z'
-    },
-    {
-        value: '2', lable: 'Z->A'
-    },
-    {
-        value: '3', lable: 'Price inc'
-    },
-    {
-        value: '4', lable: 'Price dec'
-    },
-]
 const TopFilter = (props) => {
 
     const { productsLength, handleSortBy } = props
@@ -96,7 +87,7 @@ const TopFilter = (props) => {
         <div className={classes.root}>
             <p className={classes.heading}>{`There Are ${productsLength ? productsLength : 0} Products`}</p>
             <div className={classes.sortBy}>
-                <p>Sort By:</p>
+                <h6>SortBy:</h6>
                 <button className={classes.btnSort} onClick={handleShowOption}>
                     <span>relevance</span>
                     <ArrowDropDownIcon />

@@ -1,16 +1,25 @@
 import { Box, Grid, makeStyles, Paper } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import LeftFilter from '../components/LeftFilter';
 import TopFilter from '../components/TopFilter';
-import { getProducts } from '../productSlice';
+import { getProducts } from '../pathAPI';
 import ProductList from './../components/ProductList';
 
 const useStyles = makeStyles(theme => ({
     root: {},
 
     filter: {
-        width: '350px'
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            width: '350px',
+            display: 'block'
+        },
+        [theme.breakpoints.up('sm')]: {
+            width: '350px',
+            display: 'block'
+        }
     },
 
     productList: {
@@ -23,22 +32,25 @@ const useStyles = makeStyles(theme => ({
             fontWeight: 'bold'
         }
     }
+
+
 }))
 
 const ListPage = () => {
 
-    const classes = useStyles();
+    const classes = useStyles()
     const [sort, setSort] = useState(0)
     const dispatch = useDispatch()
     const productList = useSelector(state => state.product.list)
     const search = useSelector(state => state.product.searchKey)
+    const { slug } = useParams()
 
     const handleInputSearchChange = (e) => {
 
     }
 
     const renderData = () => {
-        dispatch(getProducts({ search, sort }));
+        dispatch(getProducts({ search, sort }))
     }
 
     const handleSortBy = (value) => {
@@ -54,7 +66,6 @@ const ListPage = () => {
             dispatch(getProducts({ search, sort }))
         }
     }, [productList])
-
 
     return (
 

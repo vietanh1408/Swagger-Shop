@@ -11,6 +11,11 @@ const productApi = {
         return axiosClient.get(url)
     },
 
+    getProductByCategory: (slug) => {
+        const url = `products/category/${slug}`
+        return axiosClient.get(url)
+    },
+
     add(data) {
         const url = '/products'
         return axiosClient.post(url, data)

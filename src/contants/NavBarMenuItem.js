@@ -1,10 +1,9 @@
 const decoMenuItem = {
     DECORATIONS: [
-        'Clocks',
-        'Mirrors',
-        'Vases',
-        'Frames',
-        'Centerpieces'
+        'Men Clothing',
+        'Jewelery',
+        'Electronics',
+        'Women clothing'
     ],
     TEXTILESANDRUGS: [
         'Rugs',

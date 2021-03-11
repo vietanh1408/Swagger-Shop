@@ -12,6 +12,7 @@ function Products() {
         <Box>
             <Switch>
                 <Route exact path={match.url} component={ListPage} />
+                <Route path={`${match.url}/category/:slug`} component={ListPage} />
                 <Route path={`${match.url}/:productId`} component={ProductInformation} />
             </Switch>
         </Box>

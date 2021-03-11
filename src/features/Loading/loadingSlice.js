@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProducts } from './../Products/productSlice'
+import { getProducts } from './../Products/pathAPI'
 
 
 const loadingSlice = createSlice({
