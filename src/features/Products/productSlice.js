@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProducts } from './pathAPI'
+import { getProducts, getProductsSlider } from './pathAPI'
 
 
 const productSlice = createSlice({
@@ -23,6 +23,16 @@ const productSlice = createSlice({
         }
         ,
         [getProducts.fulfilled]: (state, { payload }) => {
+            state.list = payload
+            state.status = 'success'
+            state.fetchDataLoading = 'idle'
+        },
+        [getProductsSlider.pending]: (state, action) => {
+            state.fetchDataLoading = 'pending'
+            state.status = 'pending'
+        }
+        ,
+        [getProductsSlider.fulfilled]: (state, { payload }) => {
             state.list = payload
             state.status = 'success'
             state.fetchDataLoading = 'idle'

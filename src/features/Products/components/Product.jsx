@@ -34,6 +34,10 @@ const useStyles = makeStyles(theme => ({
     title: {
         fontSize: '16px',
         fontWeight: 'bold',
+        overflow: 'hidden',
+        display: '-webkit-box',
+        WebkitBoxOrient: 'vertical',
+        WebkitLineClamp: '1',
         '&:hover': {
             color: '#b79b6c',
         }
@@ -51,9 +55,11 @@ function Product({ product }) {
 
     return (
         <Paper elevation={3}>
-            <Box padding={1} className={classes.root}>
+            <Box padding={1} className={classes.root} title={product.title}>
                 <Box padding={4} className={classes.image}>
-                    <img src={product.image} alt={product.name}
+                    <img
+                        src={product.image}
+                        alt={product.title}
                         width="50%"
                     />
                 </Box>

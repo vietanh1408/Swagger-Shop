@@ -10,7 +10,7 @@ const ProductListSkeleton = ({ length }) => {
             <Grid container>
                 {Array.from(new Array(length)).map((item, index) => {
                     return (
-                        <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
+                        <Grid item key={index} xs={12} sm={6} md={3} lg={3}>
                             <Box padding={1}>
                                 <Skeleton variant="rect" width="100%" height={118} />
                                 <Skeleton width="60%" />

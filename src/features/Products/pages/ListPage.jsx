@@ -1,5 +1,6 @@
 import { Box, Grid, makeStyles, Paper } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import { debounce } from 'lodash-es';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import LeftFilter from '../components/LeftFilter';
@@ -39,14 +40,23 @@ const useStyles = makeStyles(theme => ({
 const ListPage = () => {
 
     const classes = useStyles()
-    const [sort, setSort] = useState(0)
     const dispatch = useDispatch()
     const productList = useSelector(state => state.product.list)
-    const search = useSelector(state => state.product.searchKey)
-    const { slug } = useParams()
+    const searchKey = useSelector(state => state.product.searchKey)
+    const [sort, setSort] = useState(0)
+    const [search, setSearch] = useState(searchKey)
+    const typingTimeoutRef = useRef(null)
 
     const handleInputSearchChange = (e) => {
+        const value = e.target.value
 
+        if (typingTimeoutRef.current) {
+            clearTimeout(typingTimeoutRef.current)
+        }
+
+        typingTimeoutRef.current = setTimeout(() => {
+            setSearch(value)
+        }, 300)
     }
 
     const renderData = () => {

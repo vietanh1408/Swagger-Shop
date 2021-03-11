@@ -11,7 +11,7 @@ function Footer() {
                 <div className="row">
                     {CONTENT_FOOTER?.map((contentFooter, index) => {
                         return (
-                            <div className="col col-12 col-sm-6 col-md-3 col-lg-3" key={index}>
+                            <div className="col col-6 col-sm-6 col-md-3 col-lg-3" key={index}>
                                 <h6 className="footer-heading">{contentFooter.title}</h6>
                                 <ul className="footer-list">
                                     {contentFooter.list?.map((contentList, index) => {

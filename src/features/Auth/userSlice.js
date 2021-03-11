@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import userApi from '../../api/userApi'
+import { createSlice } from '@reduxjs/toolkit'
 
 
 const userSlice = createSlice({
@@ -14,6 +13,7 @@ const userSlice = createSlice({
         },
         logout: (state, action) => {
             localStorage.removeItem('CURRENT_USER')
+            localStorage.removeItem('WISHLIST')
             state.current = {}
         }
     },

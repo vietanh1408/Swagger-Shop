@@ -20,7 +20,7 @@ import { fb } from './service/firebase'
 
 function App() {
 
-  /* const [showBtn, setShowBtn] = useState(false)
+  const [showBtn, setShowBtn] = useState(false)
 
   const scrollFunction = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -30,12 +30,14 @@ function App() {
     }
   }
 
-  window.onscroll = function () { scrollFunction() }
+  useEffect(() => {
+    window.onscroll = function () { scrollFunction() }
+  }, [])
 
   const handleBackToTop = () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-  } */
+  }
 
 
   /*   useEffect(() => {
@@ -74,7 +76,6 @@ function App() {
         console.log('user logged out')
       }
     })
-    /* dispatch(getProducts()) */
   }, [])
 
 
@@ -102,8 +103,8 @@ function App() {
       {/* footer */}
       <Footer />
 
-      {/* btn back to top */}{/* 
-      {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>} */}
+      {/* btn back to top */}
+      {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>}
     </div>
   )
 }
