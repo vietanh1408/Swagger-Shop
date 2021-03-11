@@ -1,10 +1,13 @@
 import { Badge } from '@material-ui/core'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import SettingMenu from './SettingMenu'
 import './styles.scss'
-
+import SearchIcon from '@material-ui/icons/Search'
+import ShareIcon from '@material-ui/icons/Share'
 
 
 function NavRight() {
@@ -36,7 +39,7 @@ function NavRight() {
         <>
             <ul className="header__setting-list">
                 <li className="header__setting-list__item">
-                    {!isScreenMobile && <i className="fas fa-search" onClick={handleShowSearchBar}></i>}
+                    {!isScreenMobile && <SearchIcon onClick={handleShowSearchBar} />}
                     <SearchBar showSearchBar={showSearchBar} isScreenMobile={isScreenMobile} />
                 </li>
                 <li className="header__setting-list__item">
@@ -50,7 +53,7 @@ function NavRight() {
                                 horizontal: 'right',
                             }}
                         >
-                            <i className="fas fa-random"></i>
+                            <ShareIcon />
                         </Badge>
                     </Link>
                 </li>
@@ -65,7 +68,7 @@ function NavRight() {
                                 horizontal: 'right',
                             }}
                         >
-                            <i className="far fa-heart"></i>
+                            <FavoriteBorderIcon />
                         </Badge>
                     </Link>
                 </li>
@@ -81,7 +84,7 @@ function NavRight() {
                                 horizontal: 'right',
                             }}
                         >
-                            <i className="fas fa-shopping-bag"></i>
+                            <ShoppingCartIcon />
                         </Badge>
                     </Link>
                 </li>
@@ -94,56 +97,3 @@ function NavRight() {
 }
 
 export default NavRight
-
-{/* <ul className="header__nav-right m-0 p-0 d-flex justify-content-end w-100">
-        <li className="header__nav-right__item ml-4">
-            <SearchIcon style={{ fontSize: '1.8rem' }} onClick={handleShowSearchBar} />
-            <SearchBar showSearchBar={showSearchBar} />
-        </li>
-        <li className="header__nav-right__item ml-4">
-
-            <Link to="">
-                <Badge
-                    color="secondary"
-                    badgeContent={1}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                >
-                    <ShuffleIcon style={{ fontSize: '1.8rem' }} />
-                </Badge>
-            </Link>
-        </li>
-        <li className="header__nav-right__item ml-4">
-            <Link to="">
-                <Badge
-                    color="secondary"
-                    badgeContent={1}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                >
-                    <FavoriteBorderIcon style={{ fontSize: '1.8rem' }} />
-                </Badge>
-            </Link>
-        </li>
-        <li className="header__nav-right__item header__nav-right__item-cart ml-4">
-            <Link to="/cart">
-                <Badge
-                    color="secondary"
-                    badgeContent={1}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                >
-                    <LocalMallIcon style={{ fontSize: '1.8rem' }} />
-                </Badge>
-            </Link>
-        </li>
-        <li className="header__nav-right__item header__nav-right__item-setting ml-4">
-            <SettingMenu />
-        </li>
-    </ul> */}

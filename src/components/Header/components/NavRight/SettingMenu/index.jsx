@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { logout } from '../../../../../features/Auth/userSlice'
 import { fb } from '../../../../../service/firebase'
 import './styles.scss'
+import MenuIcon from '@material-ui/icons/Menu'
 
 function SettingMenu() {
 
@@ -59,9 +60,7 @@ function SettingMenu() {
                 aria-haspopup="true"
                 onClick={handleToggleSettingMenu}
             >
-                <TuneIcon
-                    style={{ fontSize: '1.8rem' }}
-                />
+                <MenuIcon />
             </Button>
 
             <Menu

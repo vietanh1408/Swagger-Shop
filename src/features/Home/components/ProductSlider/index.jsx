@@ -3,6 +3,7 @@ import ShareIcon from '@material-ui/icons/Share'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
 import { getProductsSlider } from '../../../Products/pathAPI'
 import './styles.scss'
@@ -89,6 +90,7 @@ function ProductSlider() {
             <Slider {...settings}>
                 {productList?.map((product, index) => (
                     <div key={index} className={index === productIndex ? 'slide activeSlide' : 'slide'}>
+
                         <Card className={classes.root}>
                             <CardMedia
                                 className={classes.media}
@@ -97,7 +99,9 @@ function ProductSlider() {
                             />
                             <CardContent className={classes.title}>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    {product.title}
+                                    <Link to={`/products/${product.id}`}>
+                                        {product.title}
+                                    </Link>
                                 </Typography>
                             </CardContent>
                             <CardActions className={classes.action}>
