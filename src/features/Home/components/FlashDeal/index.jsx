@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ProductSlider from '../ProductSlider'
 import Clock from './Clock'
 import './styles.scss'
@@ -18,7 +19,11 @@ function FlashDeal() {
                             <h3>Grab This Offer Now!</h3>
                             <p>Flash Deals provides you high quality product at a big discount. Visiting Flash Deals, you can find what you want at a fairly low price as there are...</p>
                             <Clock />
-                            <button>View All Products</button>
+                            <Link to="/products">
+                                <button>
+                                    View All Products
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="col col-md-6 col-12">

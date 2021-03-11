@@ -8,7 +8,7 @@ const rootReducer = {
     product: productReducer,
     user: userReducer,
     wishlist: wishlistReducer,
-    loading: loadingReducer
+    loading: loadingReducer,
 }
 
 const store = configureStore({

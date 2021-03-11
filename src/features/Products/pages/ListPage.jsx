@@ -41,9 +41,9 @@ const ListPage = () => {
 
     const classes = useStyles()
     const dispatch = useDispatch()
+    const [sort, setSort] = useState(0)
     const productList = useSelector(state => state.product.list)
     const searchKey = useSelector(state => state.product.searchKey)
-    const [sort, setSort] = useState(0)
     const [search, setSearch] = useState(searchKey)
     const typingTimeoutRef = useRef(null)
 
