@@ -8,11 +8,13 @@ const cartSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            const cartItem = { ...action.payload, quantity: 1 }
-            const cartItemIndex = findIndex(state.list, [cartItem.id])
-            console.log('index', cartItemIndex)
+            const cartItem = action.payload
+            const cartItemIndex = findIndex(state.list, cartItem)
+
+            console.log(cartItemIndex)
+
             if (cartItemIndex === -1) {
-                state.list.push(cartItem)
+                state.list.push({ ...cartItem, quantity: 1 })
             }
             else {
                 state.list.forEach(x => {
