@@ -10,9 +10,6 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             const cartItem = action.payload
             const cartItemIndex = findIndex(state.list, cartItem)
-
-            console.log(cartItemIndex)
-
             if (cartItemIndex === -1) {
                 state.list.push({ ...cartItem, quantity: 1 })
             }
