@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router-dom'
 import './App.scss'
@@ -9,10 +9,9 @@ import Account from './features/Account'
 import LogIn from './features/Auth/components/LogIn'
 import Register from './features/Auth/components/Register'
 import { login } from './features/Auth/userSlice'
+import CartPage from './features/Cart'
 import Home from './features/Home'
 import Products from './features/Products'
-import { getProducts } from './features/Products/productSlice'
-import ShoppingCart from './features/ShoppingCart'
 import WishList from './features/WishList'
 import { useAuth } from './hooks'
 import { useResolved } from './hooks/useResolved'
@@ -20,7 +19,7 @@ import { fb } from './service/firebase'
 
 function App() {
 
-  const [showBtn, setShowBtn] = useState(false)
+  /* const [showBtn, setShowBtn] = useState(false)
 
   const scrollFunction = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -37,7 +36,7 @@ function App() {
   const handleBackToTop = () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-  }
+  } */
 
 
   /*   useEffect(() => {
@@ -92,7 +91,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/sign-in" component={LogIn} />
         <Route path="/sign-up" component={Register} />
-        <Route path="/cart" component={ShoppingCart} />
+        <Route path="/cart" component={CartPage} />
         <Route path="/products" component={Products} />
         <Route path="/account" component={Account} />
         <Route path="/wishlist" component={WishList} />
@@ -104,7 +103,7 @@ function App() {
       <Footer />
 
       {/* btn back to top */}
-      {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>}
+      {/* {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>} */}
     </div>
   )
 }

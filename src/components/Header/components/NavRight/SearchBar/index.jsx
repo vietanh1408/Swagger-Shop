@@ -32,6 +32,7 @@ function SearchBar({ showSearchBar, isScreenMobile }) {
         const action = searchProduct(searchTerm)
         dispatch(action)
         history.push('/products')
+        document.querySelector('form').reset()
     }
 
     return (

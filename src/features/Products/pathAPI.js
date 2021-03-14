@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import productApi from '../../api/productApi'
+import productApi from '../../api/productApi';
 
 export const getProducts = createAsyncThunk(
     'products/getProducts',
@@ -30,6 +30,7 @@ export const getProducts = createAsyncThunk(
                     return b.price - a.price
                 })
             }
+            const likes = localStorage.getItem('likes');
             return response
         } catch (error) {
             console.log('ERROR: ', error)
@@ -44,6 +45,18 @@ export const getProductsSlider = createAsyncThunk(
             return response
         } catch (error) {
             console.log('ERROR: ', error)
+        }
+    }
+)
+
+export const getSortProduct = createAsyncThunk(
+    'products/getSortProduct',
+    async () => {
+        try {
+            let response = await productApi.sort('desc')
+            return response
+        } catch (err) {
+            console.log(err)
         }
     }
 )

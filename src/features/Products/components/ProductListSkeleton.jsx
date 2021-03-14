@@ -29,7 +29,7 @@ ProductListSkeleton.propTypes = {
 };
 
 ProductListSkeleton.defaultProps = {
-    length: 6
+    length: 16
 }
 
 

@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import LeftFilter from '../components/LeftFilter';
 import TopFilter from '../components/TopFilter';
-import { getProducts } from '../pathAPI';
+import { getProducts, getSortProduct } from '../pathAPI';
+import { searchProduct } from '../productSlice';
 import ProductList from './../components/ProductList';
 
 const useStyles = makeStyles(theme => ({
@@ -43,8 +44,7 @@ const ListPage = () => {
     const dispatch = useDispatch()
     const [sort, setSort] = useState(0)
     const productList = useSelector(state => state.product.list)
-    const searchKey = useSelector(state => state.product.searchKey)
-    const [search, setSearch] = useState(searchKey)
+    const search = useSelector(state => state.product.searchKey)
     const typingTimeoutRef = useRef(null)
 
     const handleInputSearchChange = (e) => {
@@ -55,7 +55,7 @@ const ListPage = () => {
         }
 
         typingTimeoutRef.current = setTimeout(() => {
-            setSearch(value)
+            dispatch(searchProduct(value))
         }, 300)
     }
 
@@ -74,6 +74,7 @@ const ListPage = () => {
     useEffect(() => {
         if (!productList) {
             dispatch(getProducts({ search, sort }))
+            /* dispatch(getSortProduct()) */
         }
     }, [productList])
 

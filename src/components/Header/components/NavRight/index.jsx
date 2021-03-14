@@ -8,6 +8,7 @@ import SettingMenu from './SettingMenu'
 import './styles.scss'
 import SearchIcon from '@material-ui/icons/Search'
 import ShareIcon from '@material-ui/icons/Share'
+import { useSelector } from 'react-redux'
 
 
 function NavRight() {
@@ -34,6 +35,9 @@ function NavRight() {
     const handleShowSearchBar = () => {
         setShowSearchBar(!showSearchBar)
     }
+
+    const wishlist = useSelector(state => state.wishlist)
+    const cartList = useSelector(state => state.cart.list)
 
     return (
         <>
@@ -62,7 +66,7 @@ function NavRight() {
                     <Link to="">
                         <Badge
                             color="secondary"
-                            badgeContent={1}
+                            badgeContent={wishlist.length}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
@@ -78,7 +82,7 @@ function NavRight() {
                     <Link to="/cart">
                         <Badge
                             color="secondary"
-                            badgeContent={1}
+                            badgeContent={cartList.length}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',

@@ -29,6 +29,11 @@ const productApi = {
     remove(id) {
         const url = `/products/${id}`
         return axiosClient.delete(url)
+    },
+
+    sort(type) {
+        const url = `/products/?sort=${type}`
+        return axiosClient.get(url)
     }
 }
 

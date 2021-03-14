@@ -9,8 +9,9 @@ import ProductListSkeleton from './ProductListSkeleton';
 const ProductList = ({ data }) => {
 
     const loading = useSelector(state => state.loading)
+    const user = useSelector(state => state.user.current)
 
-    if (loading) return <ProductListSkeleton />
+    if (loading) return <ProductListSkeleton length={data?.length} />
 
     return (
         <>
@@ -19,7 +20,7 @@ const ProductList = ({ data }) => {
                     {data?.map(product => {
                         return (
                             <Grid item key={product.id} xs={12} sm={6} md={3} lg={3}>
-                                <Product product={product} />
+                                <Product product={product} user={user} />
                             </Grid>
                         )
                     })}

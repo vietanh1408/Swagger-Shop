@@ -1,14 +1,17 @@
-import { Box, Button, IconButton, makeStyles } from '@material-ui/core'
+import { Box, Button, makeStyles } from '@material-ui/core'
+import CreateIcon from '@material-ui/icons/Create'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import ShareIcon from '@material-ui/icons/Share'
+import TextsmsIcon from '@material-ui/icons/Textsms'
 import { Rating } from '@material-ui/lab'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import useFullPageLoader from '../../../hooks/useFullPageLoader'
-import productApi from './../../../api/productApi'
-import TextsmsIcon from '@material-ui/icons/Textsms'
-import CreateIcon from '@material-ui/icons/Create'
-import { useDispatch } from 'react-redux'
 import { addToWishlist } from '../../WishList/wishlistSlice'
+import productApi from './../../../api/productApi'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: '2rem',
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
-        gridGap: '10px',
+        gridGap: '1rem',
         gridAutoRows: 'minmax(100px, 300px)',
         gridTemplateAreas: ' "image content" "image price" "zoom price"'
     },
@@ -26,9 +29,11 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
+        padding: '2rem',
 
         '& img': {
-            width: '70%'
+            width: '70%',
+            objectFit: 'contain'
         }
     },
 
@@ -48,14 +53,25 @@ const useStyles = makeStyles(theme => ({
         gridArea: 'content'
     },
 
-    price: {
-        backgroundColor: 'green',
-        gridArea: 'price'
+    action: {
+        gridArea: 'price',
+        padding: '2rem 0'
     },
 
     zoom: {
         gridArea: 'zoom',
-        backgroundColor: 'blue'
+    },
+
+    price: {
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+    },
+
+    addToCart: {
+        backgroundColor: '#b79b6c',
+        color: '#fff',
+        marginTop: '5rem',
+        width: '20rem',
     }
 
 
@@ -121,26 +137,36 @@ function ProductInformation() {
                                 setValue(newValue);
                             }}
                         />
-                        <p>
-                            <TextsmsIcon />
-                        Read reviews (<span>1</span>)
-                        </p>
-                        <CreateIcon />
-                        <span>Write a review</span>
+                        <div className="d-flex">
+                            <p className="mr-3">
+                                <TextsmsIcon />
+                            Read reviews (<span>1</span>)
+                            </p>
+                            <CreateIcon />
+                            <span>Write a review</span>
+                        </div>
                         <br />
-                        <span>{product?.price}</span>
+                        <span className={classes.price}>${product?.price}</span>
+                        <h5 className="mt-3">Description:</h5>
                         <p>{product?.description}</p>
                     </div>
-                    <div className={classes.price}>
+                    <div className={classes.action}>
 
                         <Button
                             onClick={() => handleAddToWishlist(product)}
                         >
+                            <FavoriteBorderIcon className="mr-2" />
                             add to wishlist
-                            </Button>
+                        </Button>
                         <Button>
+                            <ShareIcon className="mr-2" />
                             add to compare
-                            </Button>
+                        </Button>
+                        <br />
+                        <Button className={classes.addToCart}>
+                            <ShoppingCartIcon className="mr-2" />
+                            add to cart
+                        </Button>
 
                     </div>
                     <div className={classes.zoom}>zoom</div>

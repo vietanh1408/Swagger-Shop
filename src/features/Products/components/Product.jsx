@@ -1,10 +1,14 @@
 import { Box, IconButton, makeStyles, Paper, Typography } from '@material-ui/core'
-import React, { useState } from 'react'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import { Link } from 'react-router-dom'
 import { FavoriteBorder } from '@material-ui/icons'
-import ShareIcon from '@material-ui/icons/Share'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 import SearchIcon from '@material-ui/icons/Search'
+import ShareIcon from '@material-ui/icons/Share'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { addToCart } from '../../Cart/cartSlice'
+import { addToWishlist, removeWishlist } from '../../WishList/wishlistSlice'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,10 +20,6 @@ const useStyles = makeStyles(theme => ({
         cursor: 'pointer',
         position: 'relative',
 
-        '&:hover > & div': {
-            backgroundColor: 'red'
-        }
-
     },
 
     image: {
@@ -28,7 +28,12 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         width: '90%',
         height: '235px',
-        transition: 'transform 1s',
+        transition: '1s',
+
+        '&:hover img': {
+            transform: 'scale(1.5)',
+            transition: 'transform 1s'
+        }
     },
 
     btn: {
@@ -62,10 +67,28 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-
-function Product({ product }) {
+function Product({ product, user }) {
 
     const classes = useStyles()
+    const [like, setLike] = useState(false)
+    const dispatch = useDispatch()
+    const handleAddToWishList = () => {
+        /* if (user !== null && like === false) {
+            dispatch(addToWishlist(product))
+            setLike(true)
+        }
+        else if (user !== null && like === true) {
+            dispatch(removeWishlist(product.id))
+        }
+        else if (user === null) {
+            alert('you must be login')
+        } */
+
+    }
+
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+    }
 
     return (
         <Paper elevation={3}>
@@ -83,7 +106,7 @@ function Product({ product }) {
                     ${product.price}
                 </Typography>
                 <Box component="div" display="flex" justifyContent="space-between" width="100%" alignItems="center">
-                    <IconButton className={classes.btn}>
+                    <IconButton className={classes.btn} onClick={() => handleAddToCart(product)}>
                         <ShoppingCartIcon />
                     </IconButton>
                     <Link to={`/products/${product.id}`}>
@@ -91,8 +114,8 @@ function Product({ product }) {
                             <SearchIcon />
                         </IconButton>
                     </Link>
-                    <IconButton className={classes.btn}>
-                        <FavoriteBorder />
+                    <IconButton className={classes.btn} onClick={handleAddToWishList}>
+                        {like ? <FavoriteIcon /> : <FavoriteBorder />}
                     </IconButton>
                     <IconButton className={classes.btn}>
                         <ShareIcon />

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProducts } from './../Products/pathAPI'
+import { getProducts, getSortProduct } from './../Products/pathAPI'
 
 
 const loadingSlice = createSlice({
@@ -11,12 +11,14 @@ const loadingSlice = createSlice({
     extraReducers: {
         [getProducts.pending]: () => true,
         [getProducts.fulfilled]: () => false,
-        [getProducts.rejected]: () => false
+        [getProducts.rejected]: () => false,
+        [getSortProduct.pending]: () => true,
+        [getSortProduct.fulfilled]: () => false,
+        [getSortProduct.rejected]: () => false
     }
 })
 
 const { reducer, actions } = loadingSlice
-
 export const { toggleLoading } = actions
 export default reducer
 
