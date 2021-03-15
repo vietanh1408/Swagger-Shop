@@ -11,7 +11,7 @@ const ProductList = ({ data }) => {
     const loading = useSelector(state => state.loading)
     const user = useSelector(state => state.user.current)
 
-    if (loading) return <ProductListSkeleton length={data?.length} />
+    if (loading) return <ProductListSkeleton length={12} />
 
     return (
         <>

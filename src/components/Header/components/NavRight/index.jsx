@@ -66,7 +66,7 @@ function NavRight() {
                     <Link to="">
                         <Badge
                             color="secondary"
-                            badgeContent={wishlist.length}
+                            badgeContent={wishlist?.length}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',
@@ -82,7 +82,7 @@ function NavRight() {
                     <Link to="/cart">
                         <Badge
                             color="secondary"
-                            badgeContent={cartList.length}
+                            badgeContent={cartList?.length}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'right',

@@ -12,6 +12,7 @@ import useFullPageLoader from '../../../hooks/useFullPageLoader'
 import { addToWishlist } from '../../WishList/wishlistSlice'
 import productApi from './../../../api/productApi'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import { addToCart } from '../../Cart/cartSlice'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,8 +21,12 @@ const useStyles = makeStyles(theme => ({
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridGap: '1rem',
-        gridAutoRows: 'minmax(100px, 300px)',
-        gridTemplateAreas: ' "image content" "image price" "zoom price"'
+        gridAutoRows: 'minmax(5rem, 21rem)',
+        gridTemplateAreas: ' "image content" "image action" "zoom action"',
+
+        [theme.breakpoints.down('xs')]: {
+            gridTemplateAreas: ' "content content" "image image" "action action" "zoom zoom"',
+        }
     },
 
     image: {
@@ -40,12 +45,17 @@ const useStyles = makeStyles(theme => ({
     banner: {
         position: 'relative',
         width: '100%',
-        height: '300px',
+        height: '18rem',
         backgroundImage: `url('http://demo.posthemes.com/pos_ecolife_decoration/decoration3/themes/theme_ecolife_decoration3/assets/img/bg_breadcrumb.jpg')`,
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
+        [theme.breakpoints.down('xs')]: {
+            height: '5rem',
+        }
 
     },
 
@@ -54,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     },
 
     action: {
-        gridArea: 'price',
+        gridArea: 'action',
         padding: '2rem 0'
     },
 
@@ -80,16 +90,18 @@ const useStyles = makeStyles(theme => ({
 function ProductInformation() {
 
     const { productId } = useParams()
-
     const [product, setProduct] = useState()
-
     const [loader, showLoader, hideLoader] = useFullPageLoader()
-
     const [value, setValue] = useState(4);
-
     const classes = useStyles()
-
     const dispatch = useDispatch()
+
+    const handleAddToWishlist = (product) => {
+        dispatch(addToWishlist(product))
+    }
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+    }
 
     useEffect(() => {
 
@@ -105,11 +117,6 @@ function ProductInformation() {
             }
         })()
     }, [])
-
-    const handleAddToWishlist = (product) => {
-        dispatch(addToWishlist(product))
-    }
-
 
     return (
         <>
@@ -163,7 +170,7 @@ function ProductInformation() {
                             add to compare
                         </Button>
                         <br />
-                        <Button className={classes.addToCart}>
+                        <Button className={classes.addToCart} onClick={() => handleAddToCart(product)}>
                             <ShoppingCartIcon className="mr-2" />
                             add to cart
                         </Button>

@@ -4,7 +4,7 @@ import React from 'react'
 const useStyles = makeStyles(theme => ({
     root: {
         height: '100%',
-        padding: '1rem 0rem 50rem 1rem'
+        padding: '0.84375rem 1rem'
     },
     search: {
         position: 'relative',
