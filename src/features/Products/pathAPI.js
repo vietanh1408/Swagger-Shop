@@ -85,5 +85,17 @@ export const getProductsSlider = createAsyncThunk(
     }
 )
 
+export const getCategories = createAsyncThunk(
+    'products/getCategories',
+    async () => {
+        try {
+            let response = await productApi.getCategoryList()
+            return response
+        } catch (err) {
+            console.log('ERROR:', err)
+        }
+    }
+)
+
 
 

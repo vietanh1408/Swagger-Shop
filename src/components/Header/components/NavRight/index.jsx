@@ -10,7 +10,6 @@ import SearchIcon from '@material-ui/icons/Search'
 import ShareIcon from '@material-ui/icons/Share'
 import { useSelector } from 'react-redux'
 
-
 function NavRight() {
 
     const [showSearchBar, setShowSearchBar] = useState(false)
@@ -47,7 +46,6 @@ function NavRight() {
                     <SearchBar showSearchBar={showSearchBar} isScreenMobile={isScreenMobile} />
                 </li>
                 <li className="header__setting-list__item">
-
                     <Link to="">
                         <Badge
                             color="secondary"
@@ -76,9 +74,7 @@ function NavRight() {
                         </Badge>
                     </Link>
                 </li>
-
                 <li className="header__setting-list__item">
-
                     <Link to="/cart">
                         <Badge
                             color="secondary"

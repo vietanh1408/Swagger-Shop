@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProducts, getProductsByCategory, getProductsSlider } from './pathAPI'
+import { getCategories, getProducts, getProductsByCategory, getProductsSlider } from './pathAPI'
 
 
 const productSlice = createSlice({
     name: 'product',
     initialState: {
-        fetchDataLoading: 'idle',
+        categories: null,
         list: null,
-        status: null,
+        fetchDataLoading: 'idle',
         searchKey: '',
         sortOption: 0,
     },
@@ -19,34 +19,36 @@ const productSlice = createSlice({
     extraReducers: {
         [getProducts.pending]: (state, action) => {
             state.fetchDataLoading = 'pending'
-            state.status = 'pending'
         }
         ,
         [getProducts.fulfilled]: (state, { payload }) => {
             state.list = payload
-            state.status = 'success'
             state.fetchDataLoading = 'idle'
         },
         [getProductsSlider.pending]: (state, action) => {
             state.fetchDataLoading = 'pending'
-            state.status = 'pending'
         }
         ,
         [getProductsSlider.fulfilled]: (state, { payload }) => {
             state.list = payload
-            state.status = 'success'
             state.fetchDataLoading = 'idle'
         },
         [getProductsByCategory.pending]: (state, action) => {
             state.fetchDataLoading = 'pending'
-            state.status = 'pending'
         }
         ,
         [getProductsByCategory.fulfilled]: (state, { payload }) => {
             state.list = payload
-            state.status = 'success'
             state.fetchDataLoading = 'idle'
         },
+        [getCategories.pending]: (state, action) => {
+            state.fetchDataLoading = 'pending'
+        }
+        ,
+        [getCategories.fulfilled]: (state, { payload }) => {
+            state.categories = payload
+            state.fetchDataLoading = 'idle'
+        }
     }
 
 })

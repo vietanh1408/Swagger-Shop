@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import productApi from '../../../../api/productApi'
+import { getCategories } from '../../../../features/Products/pathAPI'
 import './styles.scss'
 
 
@@ -17,17 +18,11 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
     }
 
     const wishlist = useSelector(state => state.wishlist)
-    const [categoryList, setCategoryList] = useState([])
+    const categoryList = useSelector(state => state.product.categories)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        (async () => {
-            try {
-                const response = await productApi.getCategoryList()
-                setCategoryList(response)
-            } catch (err) {
-                console.log(err)
-            }
-        })()
+        dispatch(getCategories())
     }, [])
 
     return (

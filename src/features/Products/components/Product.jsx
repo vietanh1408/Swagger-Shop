@@ -28,11 +28,12 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         width: '90%',
         height: '235px',
-        transition: '1s',
+        '& img': {
+            transition: 'transform 0.5s',
+        },
 
         '&:hover img': {
             transform: 'scale(1.5)',
-            transition: 'transform 1s'
         }
     },
 
