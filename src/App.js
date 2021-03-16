@@ -1,6 +1,7 @@
+import { capitalize } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom'
 import './App.scss'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -60,11 +61,11 @@ function App() {
 
   const authResolved = useResolved(authUser)
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (authResolved) {
-      history.push(!!authUser === false && '/sign-in')
+      history.push(!!authUser === false ? '/sign-in' : `${history.goBack()}`)
     }
-  }, [authUser, authResolved, history])
+  }, [authUser, authResolved, history]) */
 
   useEffect(() => {
     fb.auth.onAuthStateChanged(user => {
@@ -76,8 +77,6 @@ function App() {
       }
     })
   }, [])
-
-
 
   return (
     <div className="app">
