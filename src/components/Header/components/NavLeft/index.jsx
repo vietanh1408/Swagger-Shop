@@ -1,40 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
+import productApi from '../../../../api/productApi'
 import './styles.scss'
 
 
 function NavLeft({ openMenu, handleShowMenuMobile }) {
-
-    const screenWidth = window.innerWidth
-
-    const [isScreenMobile, setIsScreenMobile] = useState(false)
-
-    useEffect(() => {
-        if (screenWidth <= 960) {
-            setIsScreenMobile(true)
-        } else {
-            setIsScreenMobile(false)
-        }
-        if (!isScreenMobile) {
-            setShowDecoMenu(true)
-        }
-    }, [screenWidth])
-
-    const [minusIcon, setMinusIcon] = useState(false)
-
-    const [showDecoMenu, setShowDecoMenu] = useState(false)
-
-    const handleShowDecoMenu = () => {
-        setMinusIcon(!minusIcon)
-
-        setShowDecoMenu(!showDecoMenu)
-    }
-
-    const handleShowDecorationsMenu = () => {
-        setMinusIcon(true)
-    }
-
     const handleShowProductsMenu = () => {
         const productsMenu = document.querySelector('.header__nav-left__menu-decorations')
         productsMenu.style.display = 'block'
@@ -46,6 +17,18 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
     }
 
     const wishlist = useSelector(state => state.wishlist)
+    const [categoryList, setCategoryList] = useState([])
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await productApi.getCategoryList()
+                setCategoryList(response)
+            } catch (err) {
+                console.log(err)
+            }
+        })()
+    }, [])
 
     return (
 
@@ -73,19 +56,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                     <NavLink exact to="/" activeClassName="active">
                         Home
                     </NavLink>
-                </li>{/* 
-                <li className="header__menu-list__item header__menu-list__item-deco" onClick={handleShowDecoMenu}>
-                    <NavLink to="/products">
-                        Deco
-                        {
-                            showDecoMenu &&
-                            (<div className="header__nav-left__menu-deco">
-                                <DecoMenu isScreenMobile={isScreenMobile} />
-                            </div>)
-                        }
-                        {!isScreenMobile ? (<i className="fas fa-angle-down"></i>) : (<i className={!minusIcon ? "fas fa-plus" : "fas fa-minus"}></i>)}
-                    </NavLink>
-                </li> */}
+                </li>
                 <li className="header__menu-list__item header__menu-list__item-decorations">
                     <NavLink to="/products"
                         onMouseOver={handleShowProductsMenu}
@@ -99,18 +70,13 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                         className="header__nav-left__menu-decorations"
                         onMouseOver={handleShowProductsMenu}
                         onMouseLeave={handleHideProductMenu}>
-                        <li>
-                            <Link to="/products/category/men clothing">Men clothing</Link>
-                        </li>
-                        <li>
-                            <Link to="/products/category/jewelery">jewelery</Link>
-                        </li>
-                        <li>
-                            <Link to="/products/category/women clothing">Women clothing</Link>
-                        </li>
-                        <li>
-                            <Link to="/products/category/electronics">Electronics</Link>
-                        </li>
+                        {categoryList?.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    <Link to={`/products/category/${item}`}>{item}</Link>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </li>
                 <li className="header__menu-list__item" onClick={handleShowMenuMobile}>

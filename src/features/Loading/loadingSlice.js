@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getProducts, getSortProduct } from './../Products/pathAPI'
-
+import { getProducts, getProductsByCategory } from './../Products/pathAPI'
 
 const loadingSlice = createSlice({
     name: 'loading',
@@ -12,9 +11,9 @@ const loadingSlice = createSlice({
         [getProducts.pending]: () => true,
         [getProducts.fulfilled]: () => false,
         [getProducts.rejected]: () => false,
-        [getSortProduct.pending]: () => true,
-        [getSortProduct.fulfilled]: () => false,
-        [getSortProduct.rejected]: () => false
+        [getProductsByCategory.pending]: () => true,
+        [getProductsByCategory.fulfilled]: () => false,
+        [getProductsByCategory.rejected]: () => false,
     }
 })
 

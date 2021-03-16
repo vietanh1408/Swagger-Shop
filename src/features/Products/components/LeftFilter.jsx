@@ -1,6 +1,7 @@
 import { fade, InputBase, makeStyles } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import React from 'react'
+
 const useStyles = makeStyles(theme => ({
     root: {
         height: '100%',

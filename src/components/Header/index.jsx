@@ -1,12 +1,9 @@
-
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavLeft from './components/NavLeft'
 import NavRight from './components/NavRight'
 import './styles.scss'
 
 function Header() {
-
-
     const [isScroll, setIsScroll] = useState(false)
 
     const [openMenu, setOpenMenu] = useState(false)
@@ -20,14 +17,13 @@ function Header() {
             setIsScroll(false)
         }
     }
-    window.addEventListener('scroll', handleScroll)
-
-
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+    }, [])
 
     const handleShowMenuMobile = () => {
         setOpenMenu(!openMenu)
     }
-
 
     return (
 

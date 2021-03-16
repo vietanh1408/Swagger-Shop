@@ -11,8 +11,13 @@ const productApi = {
         return axiosClient.get(url)
     },
 
-    getProductByCategory: (slug) => {
+    getProductsByCategory: (slug) => {
         const url = `products/category/${slug}`
+        return axiosClient.get(url)
+    },
+
+    getCategoryList: () => {
+        const url = '/products/categories'
         return axiosClient.get(url)
     },
 
@@ -30,11 +35,6 @@ const productApi = {
         const url = `/products/${id}`
         return axiosClient.delete(url)
     },
-
-    sort(type) {
-        const url = `/products/?sort=${type}`
-        return axiosClient.get(url)
-    }
 }
 
 export default productApi

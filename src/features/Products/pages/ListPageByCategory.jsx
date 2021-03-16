@@ -1,11 +1,10 @@
 import { Box, Grid, makeStyles, Paper } from '@material-ui/core';
-import { debounce } from 'lodash-es';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useRouteMatch } from 'react-router';
 import LeftFilter from '../components/LeftFilter';
 import TopFilter from '../components/TopFilter';
-import { getProducts, getSortProduct } from '../pathAPI';
+import { getProductsByCategory } from '../pathAPI';
 import { searchProduct } from '../productSlice';
 import ProductList from './../components/ProductList';
 
@@ -38,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const ListPage = () => {
+const ListPageByCategory = () => {
 
     const classes = useStyles()
     const dispatch = useDispatch()
@@ -46,6 +45,8 @@ const ListPage = () => {
     const productList = useSelector(state => state.product.list)
     const search = useSelector(state => state.product.searchKey)
     const typingTimeoutRef = useRef(null)
+    const match = useRouteMatch()
+    const slug = match.params.slug
 
     const handleInputSearchChange = (e) => {
         const value = e.target.value
@@ -60,7 +61,7 @@ const ListPage = () => {
     }
 
     const renderData = () => {
-        dispatch(getProducts({ search, sort }))
+        dispatch(getProductsByCategory({ search, sort, slug }))
     }
 
     const handleSortBy = (value) => {
@@ -69,11 +70,11 @@ const ListPage = () => {
 
     useEffect(() => {
         renderData()
-    }, [search, sort])
+    }, [search, sort, slug])
 
     useEffect(() => {
         if (!productList) {
-            dispatch(getProducts({ search, sort }))
+            dispatch(getProductsByCategory({ search, sort, slug }))
         }
     }, [productList])
 
@@ -108,9 +109,10 @@ const ListPage = () => {
 };
 
 
-ListPage.propTypes = {
+ListPageByCategory.propTypes = {
 
 };
 
 
-export default ListPage;
+export default ListPageByCategory;
+
