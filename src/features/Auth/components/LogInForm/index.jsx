@@ -51,7 +51,7 @@ function LogInForm(props) {
                     <hr />
                     <Link to="/sign-up">
                         No account? Create one here
-                </Link>
+                    </Link>
                 </div>
             </form>
             {loader}

@@ -3,6 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CartItem from './components/CartItem'
+import UserInfo from './components/UserInfo'
 
 const useStyles = makeStyles(theme => ({
     totalPrice: {
@@ -16,14 +17,13 @@ const useStyles = makeStyles(theme => ({
             fontWeight: 'bold'
         }
     },
-    button: {
-        backgroundColor: '#b79b6c',
-        color: '#fff',
-    },
     noCart: {
         fontSize: '1.5rem',
         fontWeight: 'bold',
         marginBottom: '2rem'
+    },
+    info: {
+        border: '1px solid #363636'
     }
 }))
 
@@ -37,6 +37,10 @@ function CartPage() {
     }).reduce((curr, total) => {
         return curr + total
     }, 0)
+
+    const handleCheckOut = (values) => {
+        console.log(values)
+    }
 
     return (
         <div className="container mt-5">
@@ -61,13 +65,8 @@ function CartPage() {
                             <p>${Math.round(totalPrice * 100) / 100}</p>
 
                         </div>
-                        <div className="d-flex justify-content-end my-3">
-                            <Button className={classes.button} size="large">
-                                Check out
-                            </Button>
-                        </div>
+                        <UserInfo onSubmit={handleCheckOut} />
                     </div>
-
                 )
             }
         </div>
