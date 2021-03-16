@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 345,
         height: 400,
         boxShadow: 'none',
+        /* [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        } */
     },
     media: {
         height: 0,
@@ -78,7 +81,15 @@ function ProductSlider() {
         centerPadding: '200px',
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
-        beforeChange: (current, next) => setProductIndex(next)
+        beforeChange: (current, next) => setProductIndex(next),
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    centerPadding: '10px',
+                }
+            }
+        ]
     }
     useEffect(() => {
         dispatch(getProductsSlider())

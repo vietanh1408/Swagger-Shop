@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import './styles.scss'
 
@@ -44,6 +45,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
         productsMenu.style.display = 'none'
     }
 
+    const wishlist = useSelector(state => state.wishlist)
 
     return (
 
@@ -60,7 +62,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
                     </span>
                     <span className="mt-1">
                         <i className="far fa-heart mr-2"></i>
-                        Wishlist (<span>0</span>)
+                        Wishlist (<span>{wishlist.length}</span>)
                     </span>
                 </li>
                 <li className="header__menu-list__item">

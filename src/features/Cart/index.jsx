@@ -45,7 +45,7 @@ function CartPage() {
                 ? (
                     <>
                         <p className={classes.noCart}>There are no more items in your cart !</p>
-                        <Link to="/products"><i className="fas fa-chevron-left"></i>   Continue shopping</Link>
+                        <Link to="/products"><i className="fas fa-chevron-left"></i>Continue shopping</Link>
                     </>
                 )
                 : (
