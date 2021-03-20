@@ -35,6 +35,24 @@ const productApi = {
         const url = `/products/${id}`
         return axiosClient.delete(url)
     },
+
+    /* getAll(params) {
+        const url = '/products/get-product'
+        return axiosClient.get(url, { params })
+    },
+    get(id) {
+        const url = `products/get-one-product?id=${id}`
+        return axiosClient.get(url)
+    },
+    getCategoryList: () => {
+        const url = '/products/type'
+        return axiosClient.get(url)
+    },
+    getProductsByCategory: (slug) => {
+        const url = `products/category/${slug}`
+        return axiosClient.get(url)
+    }, */
+
 }
 
 export default productApi
