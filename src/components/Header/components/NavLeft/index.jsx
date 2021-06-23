@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
-import productApi from '../../../../api/productApi'
 import { getCategories } from '../../../../features/Products/pathAPI'
-import './styles.scss'
-
 
 function NavLeft({ openMenu, handleShowMenuMobile }) {
     const handleShowProductsMenu = () => {

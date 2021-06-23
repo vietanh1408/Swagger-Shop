@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import contentBanner from './../../contants/ContentBanner'
 import ImgBanner from './ImgBanner'
-import './styles.scss'
 
 function Banner() {
 

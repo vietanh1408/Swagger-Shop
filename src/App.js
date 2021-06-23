@@ -1,8 +1,6 @@
-import { capitalize } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom'
-import './App.scss'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import NotFound from './components/NotFound'
@@ -16,67 +14,11 @@ import Products from './features/Products'
 import WishList from './features/WishList'
 import { useAuth } from './hooks'
 import { useResolved } from './hooks/useResolved'
+import './scss/index.scss'
 import { fb } from './service/firebase'
+import { routes } from './routes'
 
 function App() {
-
-  /* const [showBtn, setShowBtn] = useState(false)
-
-  const scrollFunction = () => {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      setShowBtn(true)
-    } else {
-      setShowBtn(false)
-    }
-  }
-
-  useEffect(() => {
-    window.onscroll = function () { scrollFunction() }
-  }, [])
-
-  const handleBackToTop = () => {
-    document.body.scrollTop = 0
-    document.documentElement.scrollTop = 0
-  } */
-
-
-  /*   useEffect(() => {
-      fb.firestore
-        .collection('ecolifeUsers')
-        .where('userName', '==', 'vietanh1408')
-        .get()
-        .then(res => {
-          const users = res.docs[0]?.data()
-          console.log('users: ', users)
-        }).catch(error => {
-          console.log(error)
-        })
-    }, []) */
-
-  const dispatch = useDispatch()
-
-  const history = useHistory()
-
-  const { authUser } = useAuth()
-
-  const authResolved = useResolved(authUser)
-
-  /* useEffect(() => {
-    if (authResolved) {
-      history.push(!!authUser === false ? '/sign-in' : `${history.goBack()}`)
-    }
-  }, [authUser, authResolved, history]) */
-
-  useEffect(() => {
-    fb.auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log('user logged in: ', user.email)
-        dispatch(login(user.email))
-      } else {
-        console.log('user logged out')
-      }
-    })
-  }, [])
 
   return (
     <div className="app">
@@ -87,14 +29,21 @@ function App() {
       {/* content */}
 
       <Switch>
-        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/" component={Home} />
         <Route path="/sign-in" component={LogIn} />
         <Route path="/sign-up" component={Register} />
         <Route path="/cart" component={CartPage} />
         <Route path="/products" component={Products} />
         <Route path="/account" component={Account} />
         <Route path="/wishlist" component={WishList} />
-        <Route component={NotFound} />
+        <Route component={NotFound} /> */}
+        {routes.map((item, index) => {
+          return <Route 
+          exact={item.exact} 
+          path={item.path} 
+          component={item.component} 
+          key={index} />
+        })}
       </Switch>
 
 

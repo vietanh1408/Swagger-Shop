@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import NavLeft from './components/NavLeft'
 import NavRight from './components/NavRight'
-import './styles.scss'
 
 function Header() {
     const [isScroll, setIsScroll] = useState(false)

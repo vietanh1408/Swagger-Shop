@@ -1,5 +1,4 @@
 import React from 'react'
-import './styles.scss'
 import { CONTENT_FOOTER } from './../../contants/ContentFooter'
 import { Button, TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'

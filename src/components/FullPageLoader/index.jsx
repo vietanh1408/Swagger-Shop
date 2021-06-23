@@ -1,6 +1,4 @@
 import React from 'react'
-import LoadingImage from './../../assets/images/loading.jpg'
-import './styles.scss'
 
 function FullPageLoader() {
     return (

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import * as yup from 'yup'
 import InputField from '../../../../components/FormControl/InputField'
 import useFullPageLoader from './../../../../hooks/useFullPageLoader'
-import './styles.scss'
 
 function LogInForm(props) {
 

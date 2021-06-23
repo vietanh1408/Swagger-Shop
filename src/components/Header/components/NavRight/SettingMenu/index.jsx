@@ -6,8 +6,6 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../../../../features/Auth/userSlice'
 import { fb } from '../../../../../service/firebase'
-import './styles.scss'
-
 function SettingMenu() {
 
     const [anchorEl, setAnchorEl] = React.useState(null)
