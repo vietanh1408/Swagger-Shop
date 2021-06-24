@@ -27,8 +27,10 @@ export const authRegister = createAsyncThunk(
   async (data) => {
     try {
       const response = await authApi.register(data);
+      console.log("response...........", response);
       return response;
     } catch (err) {
+      console.log("err..........", err.response);
       return err.response;
     }
   }
@@ -37,7 +39,13 @@ export const authRegister = createAsyncThunk(
 export const authenticationSlice = createSlice({
   name: "authentication",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state, action) => {
+      state.user = null;
+      state.isAuthenticated = false;
+      localStorage.removeItem("access-token");
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(authLogin.pending, (state, action) => {
       state.isLoading = true;
@@ -78,5 +86,7 @@ export const authenticationSlice = createSlice({
     });
   },
 });
+
+export const { logout } = authenticationSlice.actions;
 
 export default authenticationSlice.reducer;

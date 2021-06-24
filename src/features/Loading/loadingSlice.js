@@ -1,24 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { getProducts, getProductsByCategory } from './../Products/pathAPI'
+import { createSlice } from "@reduxjs/toolkit";
 
 const loadingSlice = createSlice({
-    name: 'loading',
-    initialState: false,
-    reducers: {
-        toggleLoading: (state) => !state
-    },
-    extraReducers: {
-        [getProducts.pending]: () => true,
-        [getProducts.fulfilled]: () => false,
-        [getProducts.rejected]: () => false,
-        [getProductsByCategory.pending]: () => true,
-        [getProductsByCategory.fulfilled]: () => false,
-        [getProductsByCategory.rejected]: () => false,
-    }
-})
+  name: "loading",
+  initialState: false,
+  reducers: {
+    toggleLoading: (state) => !state,
+  },
+  extraReducers: {},
+});
 
-const { reducer, actions } = loadingSlice
-export const { toggleLoading } = actions
-export default reducer
-
-
+const { reducer, actions } = loadingSlice;
+export const { toggleLoading } = actions;
+export default reducer;
