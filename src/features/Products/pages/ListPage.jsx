@@ -3,6 +3,8 @@ import { debounce } from 'lodash-es';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { useGetAllProduct } from '../../../hooks/useGetAllProduct';
+import { fetchAllProduct } from '../../../reducer/product';
 import LeftFilter from '../components/LeftFilter';
 import TopFilter from '../components/TopFilter';
 import { getProducts, getSortProduct } from '../pathAPI';
@@ -77,6 +79,9 @@ const ListPage = () => {
         }
     }, [productList])
 
+    const [products, total, isLoading] = useGetAllProduct() 
+    console.log('products..................', products, 'total....................', total)
+
     return (
 
         <Box>
@@ -97,9 +102,9 @@ const ListPage = () => {
                     </Grid>
                     <Grid item className={classes.productList}>
                         <Paper elevation={3}>
-                            <TopFilter productsLength={productList?.length} handleSortBy={handleSortBy} />
+                            <TopFilter productsLength={total} handleSortBy={handleSortBy} />
                         </Paper>
-                        <ProductList data={productList} />
+                        <ProductList data={products} loading={isLoading} />
                     </Grid>
                 </Grid>
             </div>

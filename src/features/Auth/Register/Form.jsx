@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import InputField from '../../../../components/FormControl/InputField'
+import InputField from '../../../components/FormControl/InputField'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import useFullPageLoader from './../../../../hooks/useFullPageLoader'
+import useFullPageLoader from '../../../hooks/useFullPageLoader'
 
 function RegisterForm(props) {
     let schema = yup.object().shape({
@@ -47,7 +47,7 @@ function RegisterForm(props) {
     return (
         <>
             <form className="register__form" onSubmit={handleSubmit(onSubmit)}>
-                <p>Already have an account? <Link to="sign-in">Log in instead!</Link></p>
+                <p>Already have an account? <Link to="/login">Log in instead!</Link></p>
 
                 <div className="form-group-radio">
                     <label>*Social Title</label>

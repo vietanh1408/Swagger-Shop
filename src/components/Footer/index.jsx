@@ -30,7 +30,7 @@ function Footer() {
                         <form className="footer-form">
                             <TextField id="standard-basic" label="Your email address" />
                             <Button>
-                                <Link to="/sign-up">
+                                <Link to="/register">
                                     Sign Up
                                 </Link>
                             </Button>

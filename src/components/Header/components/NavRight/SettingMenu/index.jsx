@@ -107,12 +107,12 @@ function SettingMenu() {
                     </Box>
                     : <Box>
                         <MenuItem onClick={handleClose}>
-                            <Link to="/sign-in" className="text-decoration-none" color="primary">
+                            <Link to="/login" className="text-decoration-none" color="primary">
                                 Sign in
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to="/sign-up" className="text-decoration-none" color="primary">
+                            <Link to="/register" className="text-decoration-none" color="primary">
                                 Sign up
                             </Link>
                         </MenuItem>

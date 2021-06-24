@@ -1,11 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux'
-import store from './app/store'
-import ScrollToTop from './components/ScrollToTop';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import store from "./app/store";
+import ScrollToTop from "./components/ScrollToTop";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,7 +13,5 @@ ReactDOM.render(
       <App />
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-reportWebVitals();

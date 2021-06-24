@@ -6,9 +6,9 @@ import Product from './Product';
 import ProductListSkeleton from './ProductListSkeleton';
 
 
-const ProductList = ({ data }) => {
+const ProductList = ({ data, loading }) => {
 
-    const loading = useSelector(state => state.loading)
+    // const loading = useSelector(state => state.loading)
     const user = useSelector(state => state.user.current)
 
     if (loading) return <ProductListSkeleton length={12} />

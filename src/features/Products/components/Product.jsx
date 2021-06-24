@@ -93,16 +93,16 @@ function Product({ product, user }) {
 
     return (
         <Paper elevation={3}>
-            <Box padding={1} className={classes.root} title={product.title}>
+            <Box padding={1} className={classes.root} title={product.NSX}>
                 <Box padding={4} className={classes.image}>
                     <img
-                        src={product.image}
-                        alt={product.title}
+                        src={product.poster[0].url}
+                        alt={product.NSX}
                         width="50%"
                     />
                 </Box>
 
-                <Typography variant="h6" className={classes.title}>{product.title}</Typography>
+                <Typography variant="h6" className={classes.title}>{product.NSX}</Typography>
                 <Typography variant="body2" className={classes.price}>
                     ${product.price}
                 </Typography>
@@ -110,7 +110,7 @@ function Product({ product, user }) {
                     <IconButton className={classes.btn} onClick={() => handleAddToCart(product)}>
                         <ShoppingCartIcon />
                     </IconButton>
-                    <Link to={`/products/${product.id}`}>
+                    <Link to={`/products/${product._id}`}>
                         <IconButton className={classes.btn}>
                             <SearchIcon />
                         </IconButton>

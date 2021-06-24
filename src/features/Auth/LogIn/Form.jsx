@@ -3,12 +3,10 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
-import InputField from '../../../../components/FormControl/InputField'
-import useFullPageLoader from './../../../../hooks/useFullPageLoader'
+import InputField from '../../../components/FormControl/InputField'
+import useFullPageLoader from '../../../hooks/useFullPageLoader'
 
 function LogInForm(props) {
-
-    const { serverError } = props
 
     const [loader, showLoader, hideLoader] = useFullPageLoader()
 
@@ -25,7 +23,6 @@ function LogInForm(props) {
         resolver: yupResolver(schema)
     })
 
-
     const onSubmit = (values) => {
         showLoader()
         const { onSubmit } = props
@@ -40,7 +37,6 @@ function LogInForm(props) {
     return (
         <>
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-                <span className="error-message">{serverError}</span>
                 <InputField errors={errors} inputRef={register} type="email" name="email" label="*Email" />
                 <InputField errors={errors} inputRef={register} type="password" name="password" label="*Password" />
 
@@ -48,7 +44,7 @@ function LogInForm(props) {
                     <a href="#">Forgot your password?</a>
                     <button className="btn btn-dark">Sign in</button>
                     <hr />
-                    <Link to="/sign-up">
+                    <Link to="/register">
                         No account? Create one here
                     </Link>
                 </div>

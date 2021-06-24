@@ -1,42 +1,42 @@
-import axiosClient from './axiosClient'
+import axiosClient from "./axiosClient";
 
 const productApi = {
-    getAll: (params) => {
-        const url = '/products'
-        return axiosClient.get(url, { params })
-    },
+  getAll: () => {
+    const url = "/products";
+    return axiosClient.get(url);
+  },
 
-    // get: (id) => {
-    //     const url = `/products/${id}`
-    //     return axiosClient.get(url)
-    // },
+  // get: (id) => {
+  //     const url = `/products/${id}`
+  //     return axiosClient.get(url)
+  // },
 
-    // getProductsByCategory: (slug) => {
-    //     const url = `products/category/${slug}`
-    //     return axiosClient.get(url)
-    // },
+  // getProductsByCategory: (slug) => {
+  //     const url = `products/category/${slug}`
+  //     return axiosClient.get(url)
+  // },
 
-    // getCategoryList: () => {
-    //     const url = '/products/categories'
-    //     return axiosClient.get(url)
-    // },
+  // getCategoryList: () => {
+  //     const url = '/products/categories'
+  //     return axiosClient.get(url)
+  // },
 
-    // add(data) {
-    //     const url = '/products'
-    //     return axiosClient.post(url, data)
-    // },
+  // add(data) {
+  //     const url = '/products'
+  //     return axiosClient.post(url, data)
+  // },
 
-    // update(data) {
-    //     const url = `/products/${data.id}`
-    //     return axiosClient.patch(url, data)
-    // },
+  // update(data) {
+  //     const url = `/products/${data.id}`
+  //     return axiosClient.patch(url, data)
+  // },
 
-    // remove(id) {
-    //     const url = `/products/${id}`
-    //     return axiosClient.delete(url)
-    // },
+  // remove(id) {
+  //     const url = `/products/${id}`
+  //     return axiosClient.delete(url)
+  // },
 
-    /* getAll(params) {
+  /* getAll(params) {
         const url = '/products/get-product'
         return axiosClient.get(url, { params })
     },
@@ -52,7 +52,6 @@ const productApi = {
         const url = `products/category/${slug}`
         return axiosClient.get(url)
     }, */
+};
 
-}
-
-export default productApi
+export default productApi;
