@@ -11,18 +11,17 @@ import {
 } from "@material-ui/core";
 import Fade from "@material-ui/core/Fade";
 import MenuIcon from "@material-ui/icons/Menu";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "../../../../../reducer/authentication";
-import { fb } from "../../../../../service/firebase";
+import { logout } from "../../../../reducer/authentication";
 function SettingMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openSignOut, setOpenSignOut] = useState(false);
-  const [currentUser, setCurrentUser] = useState();
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
-  const user = fb.auth.currentUser;
+
+  const currentUser = useSelector((state) => state.authentication.user);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -41,23 +40,8 @@ function SettingMenu() {
   };
 
   const handleLogOut = () => {
-    fb.auth
-      .signOut()
-      .then((res) => {
-        dispatch(logout());
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(logout());
   };
-
-  useEffect(() => {
-    if (!!user) {
-      setCurrentUser(true);
-    } else {
-      setCurrentUser(false);
-    }
-  }, [user]);
 
   return (
     <>
@@ -89,7 +73,7 @@ function SettingMenu() {
       >
         {currentUser === true ? (
           <Box>
-            <MenuItem>{user?.email}</MenuItem>
+            <MenuItem>{currentUser?.email}</MenuItem>
 
             <div>
               <MenuItem onClick={handleClickOpen}>Log out</MenuItem>

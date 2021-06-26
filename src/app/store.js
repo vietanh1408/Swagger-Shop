@@ -5,13 +5,16 @@ import cartReducer from "./../features/Cart/cartSlice";
 
 import productReducer from "../reducer/product";
 import authReducer from "./../reducer/authentication";
+import searchReducer from "./../reducer/search";
 
 const rootReducer = {
   product: productReducer,
   wishlist: wishlistReducer,
   loading: loadingReducer,
+
   cart: cartReducer,
   authentication: authReducer,
+  search: searchReducer,
 };
 
 const store = configureStore({

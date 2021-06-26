@@ -3,6 +3,7 @@ import Register from "../features/Auth/Register";
 import LogIn from "../features/Auth/LogIn";
 import Home from "../features/Home";
 import Products from "../features/Products";
+import SearchPage from "../features/SearchPage";
 
 export const routes = [
   {
@@ -40,6 +41,11 @@ export const routes = [
   //     component: () => <WishList/>,
   //     exact: false,
   // },
+  {
+    path: "/search",
+    component: () => <SearchPage />,
+    exact: false,
+  },
   {
     path: "",
     component: () => <NotFound />,

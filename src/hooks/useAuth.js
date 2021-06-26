@@ -29,7 +29,6 @@ export const useAuthLogin = () => {
   const { user, isLoading, isAuthenticated, error } = useSelector(
     (state) => state.authentication
   );
-  const [loader, showLoader, hideLoader] = useFullPageLoader();
 
   const dispatch = useDispatch();
   const history = useHistory();

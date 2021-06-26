@@ -1,30 +1,20 @@
 import SearchIcon from "@material-ui/icons/Search";
-import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import React, { useState } from "react";
+import { useUpdateSearch } from "../../../../hooks/useSearchParams";
 
 function SearchBar({ showSearchBar, isScreenMobile }) {
-  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
-  const history = useHistory();
-  const typingTimeoutRef = useRef(null);
+
+  const { handleSearchClick } = useUpdateSearch();
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
-    }
-    typingTimeoutRef.current = setTimeout(() => {
-      setSearchTerm(value);
-    }, 300);
+    setSearchTerm(value);
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    // const action = searchProduct(searchTerm)
-    // dispatch(action)
-    history.push("/products");
-    document.querySelector("form").reset();
+    handleSearchClick("search", searchTerm);
   };
 
   return (
