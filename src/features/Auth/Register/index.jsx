@@ -1,19 +1,29 @@
+// libs
 import React from "react";
-import { useDispatch } from "react-redux";
-import { authRegister } from "../../../reducer/authentication";
+import { useHistory } from "react-router-dom";
+
+// custom hook
+import { useAuthRegister } from "../../../hooks/useAuth";
+
+// components
 import RegisterForm from "./Form";
 
 function Register() {
-  const dispatch = useDispatch();
-  const onSubmit = (values) => {
-    console.log("values.,,,,,,,,,,,,,,,,,", values);
-    dispatch(authRegister(values));
-  };
+  const { user, isLoading, onRegister } = useAuthRegister();
+
+  const history = useHistory();
+
+  if (user) {
+    history.goBack();
+  }
 
   return (
     <div className="register">
       <div className="container">
-        <RegisterForm onSubmit={onSubmit} />
+        <RegisterForm
+          onSubmit={(values) => onRegister(values)}
+          loading={isLoading}
+        />
       </div>
     </div>
   );

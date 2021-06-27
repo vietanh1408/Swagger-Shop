@@ -5,34 +5,35 @@ import Home from "../features/Home";
 import Products from "../features/Products";
 import SearchPage from "../features/SearchPage";
 import CartPage from "../features/Cart/index";
+import { routePath } from "../contants/routes";
 
 export const routes = [
   {
-    path: "/",
+    path: routePath.HOME,
     component: () => <Home />,
     exact: true,
     isProtected: false,
   },
   {
-    path: "/login",
+    path: routePath.LOGIN,
     component: () => <LogIn />,
     exact: false,
     isProtected: false,
   },
   {
-    path: "/register",
+    path: routePath.REGISTER,
     component: () => <Register />,
     exact: false,
     isProtected: false,
   },
   {
-    path: "/cart",
+    path: routePath.CART,
     component: () => <CartPage />,
     exact: false,
     isProtected: true,
   },
   {
-    path: "/products",
+    path: routePath.PRODUCT,
     component: () => <Products />,
     exact: false,
     isProtected: false,
@@ -49,13 +50,13 @@ export const routes = [
   //     exact: false,
   // },
   {
-    path: "/search",
+    path: routePath.SEARCH,
     component: () => <SearchPage />,
     exact: false,
     isProtected: false,
   },
   {
-    path: "",
+    path: routePath.NOT_FOUND,
     component: () => <NotFound />,
     exact: false,
     isProtected: false,

@@ -1,9 +1,21 @@
+// libs
 import React from "react";
+import { useHistory } from "react-router-dom";
+
+// custom hooks
 import { useAuthLogin } from "../../../hooks/useAuth";
+
+// components
 import LogInForm from "./Form";
 
 function LogIn() {
-  const { isLoading, onLogin } = useAuthLogin();
+  const { user, isLoading, onLogin } = useAuthLogin();
+
+  const history = useHistory();
+
+  if (user) {
+    history.goBack();
+  }
 
   return (
     <div className="log-in">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { authLogin } from "../reducer/authentication";
+import { authLogin, authRegister } from "../reducer/authentication";
 import { fb } from "../service/firebase";
 import useFullPageLoader from "./useFullPageLoader";
 
@@ -42,4 +42,23 @@ export const useAuthLogin = () => {
   };
 
   return { user, isLoading, isAuthenticated, error, onLogin };
+};
+
+export const useAuthRegister = () => {
+  const { user, isLoading, isAuthenticated, error } = useSelector(
+    (state) => state.authentication
+  );
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const onRegister = (values) => {
+    dispatch(authRegister(values));
+
+    if (isAuthenticated) {
+      history.push("/");
+    }
+  };
+
+  return { user, isLoading, isAuthenticated, error, onRegister };
 };

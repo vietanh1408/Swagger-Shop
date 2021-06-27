@@ -1,14 +1,14 @@
+// libs
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
+
+// components
 import InputField from "../../../components/FormControl/InputField";
-import useFullPageLoader from "../../../hooks/useFullPageLoader";
 
-function LogInForm(props) {
-  const [loader, showLoader, hideLoader] = useFullPageLoader();
-
+const LogInForm = (props) => {
   let schema = yup.object().shape({
     email: yup
       .string()
@@ -64,6 +64,6 @@ function LogInForm(props) {
       </form>
     </>
   );
-}
+};
 
 export default LogInForm;

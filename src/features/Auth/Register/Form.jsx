@@ -1,13 +1,14 @@
+// libs
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import InputField from "../../../components/FormControl/InputField";
-import useFullPageLoader from "../../../hooks/useFullPageLoader";
 
-function RegisterForm(props) {
+// components
+import InputField from "../../../components/FormControl/InputField";
+
+const RegisterForm = (props) => {
   let schema = yup.object().shape({
     name: yup.string().required("Please enter your fullname !"),
     email: yup
@@ -32,20 +33,11 @@ function RegisterForm(props) {
     resolver: yupResolver(schema),
   });
 
-  const [loader, showLoader, hideLoader] = useFullPageLoader();
-
-  const { isLoading } = useSelector((state) => state.authentication);
-
   const onSubmit = (values, e) => {
-    showLoader();
-    const { onSubmit } = props;
-    setTimeout(() => {
-      if (onSubmit) {
-        onSubmit(values);
-      }
-      e.target.reset();
-      hideLoader();
-    }, 3000);
+    const { onSubmit, loading } = props;
+    if (onSubmit) {
+      onSubmit(values);
+    }
   };
 
   return (
@@ -94,9 +86,8 @@ function RegisterForm(props) {
 
         <button className="btn btn-dark">Save</button>
       </form>
-      {loader}
     </>
   );
-}
+};
 
 export default RegisterForm;

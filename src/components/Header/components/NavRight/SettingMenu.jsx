@@ -1,23 +1,15 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Menu,
-  MenuItem,
-} from "@material-ui/core";
+// libs
+import { Box, Button, Menu, MenuItem } from "@material-ui/core";
 import Fade from "@material-ui/core/Fade";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+// components
 import { logout } from "../../../../reducer/authentication";
-function SettingMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [openSignOut, setOpenSignOut] = useState(false);
+
+const SettingMenu = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
 
@@ -29,14 +21,6 @@ function SettingMenu() {
 
   const handleToggleSettingMenu = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleClickOpen = () => {
-    setOpenSignOut(true);
-  };
-
-  const handleCloseSignOut = () => {
-    setOpenSignOut(false);
   };
 
   const handleLogOut = () => {
@@ -71,39 +55,16 @@ function SettingMenu() {
         }}
         getContentAnchorEl={null}
       >
-        {currentUser === true ? (
+        {currentUser ? (
           <Box>
             <MenuItem>{currentUser?.email}</MenuItem>
-
             <div>
-              <MenuItem onClick={handleClickOpen}>Log out</MenuItem>
-              <Dialog
-                open={openSignOut}
-                onClose={handleCloseSignOut}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">
-                  Are you sure ?
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    Are you sure that you want to sign out ?
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleLogOut} color="primary">
-                    Sign out
-                  </Button>
-                  <Button
-                    onClick={handleCloseSignOut}
-                    color="primary"
-                    autoFocus
-                  >
-                    Cancel
-                  </Button>
-                </DialogActions>
-              </Dialog>
+              <MenuItem onClick={handleLogOut}>
+                <div className="d-flex align-items-center">
+                  <p>Sign out</p>
+                  <i className="fas fa-sign-out-alt ml-5"></i>
+                </div>
+              </MenuItem>
             </div>
           </Box>
         ) : (
@@ -131,6 +92,6 @@ function SettingMenu() {
       </Menu>
     </>
   );
-}
+};
 
 export default SettingMenu;
