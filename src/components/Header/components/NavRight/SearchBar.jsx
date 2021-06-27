@@ -1,9 +1,17 @@
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
-import { useUpdateSearch } from "../../../../hooks/useSearchParams";
+import { useLocation } from "react-router-dom";
+import {
+  useSearchParams,
+  useUpdateSearch,
+} from "../../../../hooks/useSearchParams";
 
 function SearchBar({ showSearchBar, isScreenMobile }) {
-  const [searchTerm, setSearchTerm] = useState("");
+  const location = useLocation();
+
+  const { keyword } = useSearchParams(location.search);
+
+  const [searchTerm, setSearchTerm] = useState(keyword);
 
   const { handleSearchClick } = useUpdateSearch();
 
@@ -27,6 +35,7 @@ function SearchBar({ showSearchBar, isScreenMobile }) {
           <input
             type="text"
             placeholder="Enter your search key ..."
+            value={searchTerm}
             onChange={handleSearchChange}
           />
           <button>

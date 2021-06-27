@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   isLoading: false,
   total: 0,
+  totalPage: 0,
   error: null,
 };
 
@@ -33,6 +34,7 @@ export const searchSlice = createSlice({
       state.isLoading = false;
       state.items = action.payload.matchProducts;
       state.total = action.payload.total;
+      state.totalPage = action.payload.totalPage;
     });
 
     builder.addCase(fetchSearchProduct.rejected, (state, action) => {

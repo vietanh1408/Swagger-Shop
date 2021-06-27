@@ -13,7 +13,7 @@ export const useSearchParams = (search) => {
 };
 
 export const useUpdateSearch = () => {
-  const { search } = useLocation();
+  const { search, pathname } = useLocation();
 
   const history = useHistory();
 
@@ -30,11 +30,20 @@ export const useUpdateSearch = () => {
     }
   };
 
-  return { handleSearchClick };
+  const handleChangePageIndex = (index) => {
+    const searchParams = queryString.parse(search);
+
+    searchParams.pageIndex = index?.toString();
+    history.push(`${pathname}?${queryString.stringify(searchParams)}`);
+  };
+
+  return { handleSearchClick, handleChangePageIndex };
 };
 
 export const useSearchReferences = () => {
-  const { items, isLoading, total } = useSelector((state) => state.search);
+  const { items, isLoading, total, totalPage } = useSelector(
+    (state) => state.search
+  );
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -46,5 +55,5 @@ export const useSearchReferences = () => {
     await dispatch(fetchSearchProduct(searchParams));
   }, [location.search]);
 
-  return [items, isLoading, total];
+  return [items, isLoading, total, totalPage];
 };
