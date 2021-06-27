@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import authApi from "../api/auth";
+import authApi from "../api/authApi";
 
 const initialState = {
   user: null,
@@ -55,10 +55,6 @@ export const authenticationSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload.user;
       state.isAuthenticated = true;
-      localStorage.setItem(
-        "access-token",
-        JSON.stringify(action.payload.token)
-      );
     });
 
     builder.addCase(authLogin.rejected, (state, action) => {
@@ -74,10 +70,6 @@ export const authenticationSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload.user;
       state.isAuthenticated = true;
-      localStorage.setItem(
-        "access-token",
-        JSON.stringify(action.payload.token)
-      );
     });
 
     builder.addCase(authRegister.rejected, (state, action) => {
