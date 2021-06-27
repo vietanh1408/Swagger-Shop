@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProduct } from "../reducer/product";
 
 export const useGetAllProduct = () => {
-  const { items, total, isLoading } = useSelector((state) => state.product);
+  const { items, total, isLoading, totalPage } = useSelector(
+    (state) => state.product
+  );
 
   const dispatch = useDispatch();
 
@@ -11,5 +13,5 @@ export const useGetAllProduct = () => {
     dispatch(fetchAllProduct());
   }, []);
 
-  return [items, total, isLoading];
+  return [items, total, isLoading, totalPage];
 };

@@ -20,7 +20,7 @@ export const useUpdateSearch = () => {
   const handleSearchClick = (path, value) => {
     const searchObj = queryString.parse(search);
     if (path) {
-      searchObj.keyword = value || "";
+      searchObj.keyword = value || " ";
       searchObj.pageIndex = DEFAULT_PAGE_INDEX;
       searchObj.pageSize = DEFAULT_PAGE_SIZE;
 

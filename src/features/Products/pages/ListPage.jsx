@@ -1,8 +1,9 @@
 import { Box, Grid, makeStyles, Paper } from "@material-ui/core";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CustomPagination from "../../../components/CustomPagination";
+import LeftFilter from "../../../components/LeftFilter";
 import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
-import LeftFilter from "../components/LeftFilter";
 import TopFilter from "../components/TopFilter";
 import ProductList from "./../components/ProductList";
 
@@ -55,13 +56,7 @@ const ListPage = () => {
     setSort(value);
   };
 
-  const [products, total, isLoading] = useGetAllProduct();
-  console.log(
-    "products..................",
-    products,
-    "total....................",
-    total
-  );
+  const [products, total, isLoading, totalPage] = useGetAllProduct();
 
   return (
     <Box>
@@ -87,6 +82,7 @@ const ListPage = () => {
             <ProductList data={products} loading={isLoading} />
           </Grid>
         </Grid>
+        <CustomPagination totalPage={totalPage} />
       </div>
     </Box>
   );

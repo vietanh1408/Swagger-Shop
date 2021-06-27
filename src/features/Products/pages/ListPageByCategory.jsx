@@ -2,7 +2,7 @@ import { Box, Grid, makeStyles, Paper } from "@material-ui/core";
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
-import LeftFilter from "../components/LeftFilter";
+import LeftFilter from "../../../components/LeftFilter";
 import TopFilter from "../components/TopFilter";
 import ProductList from "./../components/ProductList";
 
