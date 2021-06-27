@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { routes } from "./routes";
 import "./scss/index.scss";
+import ProtectedRoute from "./hocs/ProtectedRoute";
 
 function App() {
   return (
@@ -15,14 +16,25 @@ function App() {
 
       <Switch>
         {routes.map((item, index) => {
-          return (
-            <Route
-              exact={item.exact}
-              path={item.path}
-              component={item.component}
-              key={index}
-            />
-          );
+          if (item.isProtected) {
+            return (
+              <ProtectedRoute
+                exact={item.exact}
+                path={item.path}
+                component={item.component}
+                key={index}
+              />
+            );
+          } else {
+            return (
+              <Route
+                exact={item.exact}
+                path={item.path}
+                component={item.component}
+                key={index}
+              />
+            );
+          }
         })}
       </Switch>
 
