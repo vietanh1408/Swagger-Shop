@@ -50,20 +50,6 @@ function NavRight() {
           <Link to="">
             <Badge
               color="secondary"
-              badgeContent={1}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-            >
-              <ShareIcon />
-            </Badge>
-          </Link>
-        </li>
-        <li className="header__setting-list__item">
-          <Link to="">
-            <Badge
-              color="secondary"
               badgeContent={wishlist?.length}
               anchorOrigin={{
                 vertical: "bottom",

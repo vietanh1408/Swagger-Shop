@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 function NavLeft({ openMenu, handleShowMenuMobile }) {
@@ -19,11 +19,6 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
 
   const wishlist = useSelector((state) => state.wishlist);
   const categoryList = useSelector((state) => state.product.categories);
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //     dispatch(getCategories())
-  // }, [])
 
   return (
     <>
