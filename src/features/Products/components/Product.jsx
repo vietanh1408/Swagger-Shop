@@ -76,18 +76,7 @@ function Product({ product, user }) {
   const classes = useStyles();
   const [like, setLike] = useState(false);
   const dispatch = useDispatch();
-  const handleAddToWishList = () => {
-    /* if (user !== null && like === false) {
-            dispatch(addToWishlist(product))
-            setLike(true)
-        }
-        else if (user !== null && like === true) {
-            dispatch(removeWishlist(product.id))
-        }
-        else if (user === null) {
-            alert('you must be login')
-        } */
-  };
+  const handleAddToWishList = () => {};
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));

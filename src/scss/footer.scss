@@ -1,30 +1,30 @@
-
+@import "./mixin";
 .footer {
-    margin-top: 2rem;
-    padding: 2rem;
+  margin-top: 2rem;
+  padding: 2rem;
 
-    &-heading {
-        margin-bottom: 2rem;
+  &-heading {
+    margin-bottom: 2rem;
+  }
+
+  &-list-item {
+    margin-bottom: 1rem;
+    transition: 1s;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      color: $mainColor;
+      transform: translateX(1rem);
+      transition: transform 0.5s;
     }
+  }
 
-    &-list-item {
-        margin-bottom: 1rem;
-        transition: 1s;
-        cursor: pointer;
-        position: relative;
+  &-form {
+    display: flex;
 
-        &:hover {
-            color: #b79b6c;
-            transform: translateX(1rem);
-            transition: transform 0.5s;
-        }
+    button {
+      padding: 0;
     }
-
-    &-form {
-        display: flex;
-
-        button {
-            padding: 0;
-        }
-    }
+  }
 }

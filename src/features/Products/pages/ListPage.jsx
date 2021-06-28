@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CustomPagination from "../../../components/CustomPagination";
 import LeftFilter from "../../../components/LeftFilter";
 import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
-import TopFilter from "../components/TopFilter";
+import TopFilter from "../../../components/TopFilter";
 import ProductList from "./../components/ProductList";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,19 +38,6 @@ const ListPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [sort, setSort] = useState(0);
-  const productList = useSelector((state) => state.product.list);
-  const search = useSelector((state) => state.product.searchKey);
-  const typingTimeoutRef = useRef(null);
-
-  const handleInputSearchChange = (e) => {
-    const value = e.target.value;
-
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
-    }
-
-    typingTimeoutRef.current = setTimeout(() => {}, 300);
-  };
 
   const handleSortBy = (value) => {
     setSort(value);
@@ -71,14 +58,10 @@ const ListPage = () => {
       <div className="container pt-5">
         <Grid container spacing={3}>
           <Grid item className={classes.filter}>
-            <Paper elevation={3}>
-              <LeftFilter onChange={handleInputSearchChange} />
-            </Paper>
+            <LeftFilter />
           </Grid>
           <Grid item className={classes.productList}>
-            <Paper elevation={3}>
-              <TopFilter productsLength={total} handleSortBy={handleSortBy} />
-            </Paper>
+            <TopFilter productsLength={total} handleSortBy={handleSortBy} />
             <ProductList data={products} loading={isLoading} />
           </Grid>
         </Grid>

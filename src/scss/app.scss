@@ -1,97 +1,102 @@
+@import "./mixin";
+
 .app {
-    margin: 0;
-    box-sizing: border-box;
-    position: relative;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
 }
 
 button {
-    outline: none !important;
+  outline: none !important;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
-
 
 .container {
-    position: relative;
-    max-width: 100%;
-    width: 1440px;
+  position: relative;
+  max-width: 100%;
+  width: 1440px;
 }
 @media screen and (max-width: 960px) {
-    .app {
-        padding: 0.5rem 1rem !important;
-    }
+  .app {
+    padding: 0.5rem 1rem !important;
+  }
 }
 
 .btn-back-to-top {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1rem;
-    font-size: 2.5rem;
-    color: #b79b6c;
-    cursor: pointer;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  color: $mainColor;
+  cursor: pointer;
 }
-
 
 .app-container {
-    width: 76% !important;
-    margin: 0 auto !important;
+  width: 76% !important;
+  margin: 0 auto !important;
 }
-
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-li{ 
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
+li {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    color: #253237;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: #253237;
 }
 
 ul {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 a:hover {
-    text-decoration: none !important;
-    color: #b79b6c !important;
+  text-decoration: none !important;
+  color: $mainColor !important;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
-*, html{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-    line-height: 24px;
-    font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
+  line-height: 24px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
 }
 
 div {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
-    height: 100%;
+  height: 100%;
 }
 
 .row {
-    height: 100%;
+  height: 100%;
 }

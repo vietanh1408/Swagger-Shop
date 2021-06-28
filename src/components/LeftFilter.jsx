@@ -1,76 +1,98 @@
-import { fade, InputBase, makeStyles } from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search';
-import React from 'react'
+import { Slider } from "@material-ui/core";
+import React, { useState } from "react";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        height: '100%',
-        padding: '0.84375rem 1rem'
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(1),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-                width: '20ch',
-            },
-        },
-    },
-}))
+const LeftFilter = () => {
+  const [value, setValue] = useState(0);
 
-function LeftFilter({ onChange }) {
+  const max = 15000000;
 
-    const classes = useStyles()
+  const step = 1000000;
 
-    return (
-        <form className={classes.root}>
-            <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                    <SearchIcon />
-                </div>
-                <InputBase
-                    placeholder="Search…"
-                    classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                    }}
-                    inputProps={{ 'aria-label': 'search' }}
-                    onChange={onChange}
-                />
+  const handleChange = (e, newValue) => {
+    setValue(newValue);
+  };
 
-            </div>
-        </form>
-    )
-}
+  console.log("value.....", value);
 
-export default LeftFilter
+  return (
+    <div className="left-filter">
+      <div className="filter-by">
+        <span>Filter By</span>
+      </div>
+      <div className="filter-categories">
+        <h5>Categories</h5>
+        <ul>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              Vans
+            </label>
+            <span>(12)</span>
+          </li>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              Vans
+            </label>
+            <span>(12)</span>
+          </li>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              Vans
+            </label>
+            <span>(12)</span>
+          </li>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              Vans
+            </label>
+            <span>(12)</span>
+          </li>
+        </ul>
+      </div>
+      <div className="filter-price">
+        <h5>Price</h5>
+        <span>{`${value} VNĐ - ${max} VNĐ`}</span>
+        <Slider
+          className="filter-price-slider"
+          value={value}
+          onChange={handleChange}
+          max={max}
+          step={step}
+          aria-labelledby="continuous-slider"
+        />
+      </div>
+
+      <div className="filter-size">
+        <h5>Size</h5>
+        <ul>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              L
+            </label>
+            <span>(12)</span>
+          </li>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              XL
+            </label>
+            <span>(12)</span>
+          </li>
+          <li>
+            <input type="checkbox" />
+            <label htmlFor="" className="pl-2">
+              XXL
+            </label>
+            <span>(12)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default LeftFilter;
