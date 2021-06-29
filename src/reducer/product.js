@@ -11,9 +11,9 @@ const initialState = {
 // fetch all product
 export const fetchAllProduct = createAsyncThunk(
   "product/fetchAllProduct",
-  async () => {
+  async (value) => {
     try {
-      const response = await productApi.getAll();
+      const response = await productApi.getProduct(value);
       return response;
     } catch (err) {
       console.log("loi..........", err);

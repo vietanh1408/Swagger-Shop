@@ -37,7 +37,14 @@ export const useUpdateSearch = () => {
     history.push(`${pathname}?${queryString.stringify(searchParams)}`);
   };
 
-  return { handleSearchClick, handleChangePageIndex };
+  const handleChangeSort = (value) => {
+    const searchParams = queryString.parse(search);
+
+    searchParams.sortBy = value;
+    history.push(`${pathname}?${queryString.stringify(searchParams)}`);
+  };
+
+  return { handleSearchClick, handleChangePageIndex, handleChangeSort };
 };
 
 export const useSearchReferences = () => {
@@ -51,7 +58,6 @@ export const useSearchReferences = () => {
   const searchParams = useSearchParams(location.search);
 
   useEffect(async () => {
-    console.log("searchParams.....................", searchParams);
     await dispatch(fetchSearchProduct(searchParams));
   }, [location.search]);
 

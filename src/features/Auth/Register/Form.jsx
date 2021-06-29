@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 // components
-import InputField from "../../../components/FormControl/InputField";
+import InputField from "../../../components/InputField";
 
 const RegisterForm = (props) => {
   let schema = yup.object().shape({

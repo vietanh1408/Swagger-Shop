@@ -1,6 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
 import Checkbox from "@material-ui/core/Checkbox";
+import React from "react";
 
 const InputField = (props) => {
   const { inputRef, type, name, label, value, errors } = props;

@@ -1,3 +1,4 @@
+// libs
 import {
   Box,
   IconButton,
@@ -11,10 +12,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShareIcon from "@material-ui/icons/Share";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../Cart/cartSlice";
-import { addToWishlist, removeWishlist } from "../../WishList/wishlistSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "90%",
     height: "235px",
+    overflow: "hidden",
     "& img": {
       transition: "transform 0.5s",
     },
@@ -75,22 +74,16 @@ const useStyles = makeStyles((theme) => ({
 function Product({ product, user }) {
   const classes = useStyles();
   const [like, setLike] = useState(false);
-  const dispatch = useDispatch();
-  const handleAddToWishList = () => {};
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
 
   return (
     <Paper elevation={3}>
-      <Box padding={1} className={classes.root} title={product.NSX}>
+      <Box padding={1} className={classes.root} title={product.name}>
         <Box padding={4} className={classes.image}>
-          <img src={product.poster[0].url} alt={product.NSX} width="80%" />
+          <img src={product.poster[0].url} alt={product.name} width="80%" />
         </Box>
 
         <Typography variant="h6" className={classes.title}>
-          {product.NSX}
+          {product.name}
         </Typography>
         <Typography variant="body2" className={classes.price}>
           ${product.price}
@@ -104,7 +97,7 @@ function Product({ product, user }) {
         >
           <IconButton
             className={classes.btn}
-            onClick={() => handleAddToCart(product)}
+            onClick={() => console.log("add to cart...")}
           >
             <ShoppingCartIcon />
           </IconButton>
@@ -113,7 +106,10 @@ function Product({ product, user }) {
               <SearchIcon />
             </IconButton>
           </Link>
-          <IconButton className={classes.btn} onClick={handleAddToWishList}>
+          <IconButton
+            className={classes.btn}
+            onClick={() => console.log("add to wishlist")}
+          >
             {like ? <FavoriteIcon /> : <FavoriteBorder />}
           </IconButton>
           <IconButton className={classes.btn}>

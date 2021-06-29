@@ -1,6 +1,11 @@
+// libs
 import { makeStyles } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import React, { useState } from "react";
+// constants
+import { options } from "../contants/sortOptions";
+// custom hooks
+import { useUpdateSearch } from "../hooks/useSearchParams";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,52 +74,61 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
 const TopFilter = (props) => {
-  const { productsLength, handleSortBy } = props;
+  // props
+  const { productsLength } = props;
 
-  const classes = useStyles();
-
+  // use hook
+  const [active, setActive] = useState(options[0].value);
   const [showOption, setShowOption] = useState(false);
 
+  const activedOption = options.find((option) => option.value == active);
+
+  // custom hooks
+  const classes = useStyles();
+  const { handleChangeSort } = useUpdateSearch();
+
+  // function handler
   const handleShowOption = () => {
     setShowOption(!showOption);
   };
 
-  const handleSort = (value) => {
-    handleSortBy(value);
+  const onChangeSort = (e) => {
+    const { value } = e.target;
+    handleChangeSort(value);
+    setActive(value);
+    setShowOption(false);
   };
 
   return (
     <div className={classes.root}>
-      <p className={classes.heading}>{`There Are ${
-        productsLength ? productsLength : 0
-      } Products`}</p>
+      <p className={classes.heading}>
+        {`There Are ${productsLength ? productsLength : 0} Products`}
+      </p>
       <div className={classes.sortBy}>
         <span style={{ color: "#888", marginRight: "2rem" }}>SortBy:</span>
         <button className={classes.btnSort} onClick={handleShowOption}>
-          <span>relevance</span>
+          <span>{activedOption.text}</span>
           <ArrowDropDownIcon />
         </button>
-        {showOption ? (
+        {showOption && (
           <ul className={classes.options}>
-            <li className={classes.option} onClick={() => handleSort(0)}>
-              Relevance
-            </li>
-            <li className={classes.option} onClick={() => handleSort(1)}>
-              Name, A to Z
-            </li>
-            <li className={classes.option} onClick={() => handleSort(2)}>
-              Name, Z to A
-            </li>
-            <li className={classes.option} onClick={() => handleSort(3)}>
-              Price, low to high
-            </li>
-            <li className={classes.option} onClick={() => handleSort(4)}>
-              Price, high to low
-            </li>
+            {options.map((option, index) => {
+              return (
+                <li
+                  key={index}
+                  className={`${classes.option} ${
+                    option.value == active ? "active-option" : ""
+                  }`}
+                  value={option.value}
+                  onClick={onChangeSort}
+                >
+                  {option.text}
+                </li>
+              );
+            })}
           </ul>
-        ) : (
-          ""
         )}
       </div>
     </div>

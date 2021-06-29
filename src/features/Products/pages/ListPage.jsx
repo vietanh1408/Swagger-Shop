@@ -1,11 +1,15 @@
-import { Box, Grid, makeStyles, Paper } from "@material-ui/core";
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// libs
+import { Box, Grid, makeStyles } from "@material-ui/core";
+import React from "react";
+
+// components
 import CustomPagination from "../../../components/CustomPagination";
 import LeftFilter from "../../../components/LeftFilter";
-import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
 import TopFilter from "../../../components/TopFilter";
 import ProductList from "./../components/ProductList";
+
+// custom hooks
+import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -36,12 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ListPage = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const [sort, setSort] = useState(0);
-
-  const handleSortBy = (value) => {
-    setSort(value);
-  };
 
   const [products, total, isLoading, totalPage] = useGetAllProduct();
 
@@ -61,7 +59,7 @@ const ListPage = () => {
             <LeftFilter />
           </Grid>
           <Grid item className={classes.productList}>
-            <TopFilter productsLength={total} handleSortBy={handleSortBy} />
+            <TopFilter productsLength={total} />
             <ProductList data={products} loading={isLoading} />
           </Grid>
         </Grid>

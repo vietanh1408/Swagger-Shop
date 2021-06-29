@@ -12,8 +12,6 @@ const LeftFilter = () => {
     setValue(newValue);
   };
 
-  console.log("value.....", value);
-
   return (
     <div className="left-filter">
       <div className="filter-by">

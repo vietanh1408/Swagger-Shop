@@ -24,7 +24,7 @@ const CustomPagination = (props) => {
       <div className="row">
         <Pagination
           count={totalPage}
-          page={+pageIndex}
+          page={+pageIndex || 1}
           variant="outlined"
           size="large"
           shape="rounded"
