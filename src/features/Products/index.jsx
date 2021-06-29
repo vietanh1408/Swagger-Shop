@@ -11,8 +11,9 @@ function Products() {
   return (
     <Box>
       <Switch>
-        <Route path={match.url} component={ListPage} />
+        <Route exact path={match.url} component={ListPage} />
         <Route
+          exact
           path={`${match.url}/category/:slug`}
           component={ListPageByCategory}
         />

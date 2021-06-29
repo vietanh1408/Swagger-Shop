@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: "1.3rem",
     fontWeight: "bold",
+
     width: "100%",
     padding: "0 0.9rem",
     overflow: "hidden",
@@ -76,48 +77,76 @@ function Product({ product, user }) {
   const [like, setLike] = useState(false);
 
   return (
-    <Paper elevation={3}>
-      <Box padding={1} className={classes.root} title={product.name}>
-        <Box padding={4} className={classes.image}>
-          <img src={product.poster[0].url} alt={product.name} width="80%" />
-        </Box>
+    // <Paper elevation={3}>
+    //   <Box padding={1} className={classes.root} title={product.name}>
+    //     <Box padding={4} className={classes.image}>
+    //       <img src={product.poster[0].url} alt={product.name} width="80%" />
+    //     </Box>
 
-        <Typography variant="h6" className={classes.title}>
-          {product.name}
-        </Typography>
-        <Typography variant="body2" className={classes.price}>
-          ${product.price}
-        </Typography>
-        <Box
-          component="div"
-          display="flex"
-          justifyContent="space-between"
-          width="100%"
-          alignItems="center"
-        >
-          <IconButton
-            className={classes.btn}
-            onClick={() => console.log("add to cart...")}
-          >
-            <ShoppingCartIcon />
-          </IconButton>
-          <Link to={`/products/${product._id}`}>
-            <IconButton className={classes.btn}>
-              <SearchIcon />
-            </IconButton>
-          </Link>
-          <IconButton
-            className={classes.btn}
-            onClick={() => console.log("add to wishlist")}
-          >
-            {like ? <FavoriteIcon /> : <FavoriteBorder />}
-          </IconButton>
-          <IconButton className={classes.btn}>
-            <ShareIcon />
-          </IconButton>
-        </Box>
-      </Box>
-    </Paper>
+    //     <Typography
+    //       variant="h6"
+    //       className={classes.title}
+    //       style={{ textTransform: "uppercase" }}
+    //     >
+    //       {product.name}
+    //     </Typography>
+    //     <Typography variant="body2" className={classes.price}>
+    //       ${product.price}
+    //     </Typography>
+    //     <Box
+    //       component="div"
+    //       display="flex"
+    //       justifyContent="space-between"
+    //       width="100%"
+    //       alignItems="center"
+    //     >
+    //       <IconButton
+    //         className={classes.btn}
+    //         onClick={() => console.log("add to cart...")}
+    //       >
+    //         <ShoppingCartIcon />
+    //       </IconButton>
+    //       <Link to={`/products/${product._id}`}>
+    //         <IconButton className={classes.btn}>
+    //           <SearchIcon />
+    //         </IconButton>
+    //       </Link>
+    //       <IconButton
+    //         className={classes.btn}
+    //         onClick={() => console.log("add to wishlist")}
+    //       >
+    //         {like ? <FavoriteIcon /> : <FavoriteBorder />}
+    //       </IconButton>
+    //       <IconButton className={classes.btn}>
+    //         <ShareIcon />
+    //       </IconButton>
+    //     </Box>
+    //   </Box>
+    // </Paper>
+    <div className="product">
+      <figure>
+        <div className="front">
+          <img
+            className="product-img"
+            src={product.poster[3].url}
+            alt={product.name}
+          />
+        </div>
+        <span>
+          {Array.from(new Array(product.rating)).map((item, index) => {
+            return (
+              <i
+                key={index}
+                className="fas fa-star"
+                style={{ color: "yellow", marginRight: "0.5rem" }}
+              ></i>
+            );
+          })}
+        </span>
+      </figure>
+      <h4 className="product-title">{product.name}</h4>
+      <span className="product-price">{`${product.price} VND`}</span>
+    </div>
   );
 }
 

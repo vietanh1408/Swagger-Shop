@@ -55,10 +55,26 @@ const ListPage = () => {
       </Box>
       <div className="container pt-5">
         <Grid container spacing={3}>
-          <Grid item className={classes.filter}>
+          <Grid
+            item
+            xs={12}
+            sm={4}
+            md={4}
+            lg={4}
+            xl={4}
+            className={classes.filter}
+          >
             <LeftFilter />
           </Grid>
-          <Grid item className={classes.productList}>
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={8}
+            lg={8}
+            xl={8}
+            className={classes.productList}
+          >
             <TopFilter productsLength={total} />
             <ProductList data={products} loading={isLoading} />
           </Grid>
