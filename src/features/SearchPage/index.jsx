@@ -1,16 +1,20 @@
 import React from "react";
-import CustomPagination from "../../components/CustomPagination";
+import EmptyResult from "../../components/EmptyResult";
+import ProductPageLayout from "../../components/ProductPageLayout";
 import { useSearchReferences } from "../../hooks/useSearchParams";
-import ProductList from "../Products/components/ProductList";
 
 function SearchPage() {
-  const [items, isLoading, total, totalPage] = useSearchReferences();
+  const [products, isLoading, total, totalPage] = useSearchReferences();
+
+  if (!total) return <EmptyResult />;
 
   return (
-    <div className="container">
-      <ProductList data={items} loading={isLoading} />
-      <CustomPagination totalPage={totalPage} />
-    </div>
+    <ProductPageLayout
+      products={products}
+      isLoading={isLoading}
+      total={total}
+      totalPage={totalPage}
+    />
   );
 }
 

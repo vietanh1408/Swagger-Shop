@@ -1,9 +1,12 @@
+// libs
 import { Box, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
-import Product from "../../../components/Product";
-import ProductListSkeleton from "../../../components/ProductListSkeleton";
+
+// components
+import Product from "../../components/Product";
+import ProductListSkeleton from "../../components/ProductListSkeleton";
 
 const ProductList = ({ data, loading }) => {
   const { user } = useSelector((state) => state.authentication);
