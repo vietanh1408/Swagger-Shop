@@ -14,9 +14,9 @@ import ScrollToTop from "./components/ScrollToTop";
 
 ReactDOM.render(
   <BrowserRouter>
+    <ScrollToTop />
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ScrollToTop />
         <App />
       </PersistGate>
     </Provider>
