@@ -5,12 +5,16 @@ import Header from "./components/Header";
 import { routes } from "./routes";
 import "./scss/index.scss";
 import ProtectedRoute from "./hocs/ProtectedRoute";
+import Banner from "./components/Banner";
 
 function App() {
   return (
     <div className="app">
       {/* header */}
       <Header />
+
+      {/* Banner */}
+      <Banner />
 
       {/* content */}
 

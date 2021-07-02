@@ -1,5 +1,6 @@
-import { Box, Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
+// components
 import ProductList from "../features/Products/ProductList";
 import CustomPagination from "./CustomPagination";
 import LeftFilter from "./LeftFilter";
@@ -35,44 +36,34 @@ const useStyles = makeStyles((theme) => ({
 const ProductPageLayout = ({ products, total, isLoading, totalPage }) => {
   const classes = useStyles();
   return (
-    <Box>
-      {/* banner */}
-      <Box>
-        <img
-          src="http://demo.posthemes.com/pos_ecolife_decoration/decoration3/themes/theme_ecolife_decoration3/assets/img/bg_breadcrumb.jpg"
-          alt="banner"
-          width="100%"
-        />
-      </Box>
-      <div className="container pt-5">
-        <Grid container spacing={4}>
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            md={4}
-            lg={3}
-            xl={3}
-            className={classes.filter}
-          >
-            <LeftFilter />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={8}
-            lg={9}
-            xl={9}
-            className={classes.productList}
-          >
-            <TopFilter productsLength={total} />
-            <ProductList data={products} loading={isLoading} />
-            <CustomPagination totalPage={totalPage} />
-          </Grid>
+    <div className="container pt-5">
+      <Grid container spacing={4}>
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          md={4}
+          lg={3}
+          xl={3}
+          className={classes.filter}
+        >
+          <LeftFilter />
         </Grid>
-      </div>
-    </Box>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={8}
+          lg={9}
+          xl={9}
+          className={classes.productList}
+        >
+          <TopFilter productsLength={total} />
+          <ProductList data={products} loading={isLoading} />
+          <CustomPagination totalPage={totalPage} />
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

@@ -11,11 +11,18 @@ function Product({ product }) {
     <div className="product">
       <figure>
         <span className="product-discount">{product.discount}</span>
-        <img
-          className="product-img"
-          src={product.poster[3].url}
-          alt={product.name}
-        />
+        <div className="product-img">
+          <img
+            className="product-img-front"
+            src={product.poster[0].url}
+            alt={product.name}
+          />
+          <img
+            className="product-img-back"
+            src={product.poster[1].url}
+            alt={product.name}
+          />
+        </div>
         <div className="product-actions">
           <p className="product-actions-icon">
             <ShoppingCartIcon />

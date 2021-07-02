@@ -12,8 +12,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { addToCart } from "../../../Cart/cartSlice";
-import "./styles.scss";
+import { addToCart } from "../../Cart/cartSlice";
+import Product from "../../../components/Product";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,7 +105,7 @@ function ProductSlider() {
             key={index}
             className={index === productIndex ? "slide activeSlide" : "slide"}
           >
-            <Card className={classes.root}>
+            {/* <Card className={classes.root}>
               <CardMedia
                 className={classes.media}
                 image={product.image}
@@ -125,7 +125,8 @@ function ProductSlider() {
                 </IconButton>
                 <Typography variant="body2">${product.price}</Typography>
               </CardActions>
-            </Card>
+            </Card> */}
+            <Product product={product} />
           </div>
         ))}
       </Slider>

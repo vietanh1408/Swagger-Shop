@@ -6,7 +6,8 @@ const searchApi = {
     if (search.keyword)
       url += `?keyword=${search.keyword}
       &pageIndex=${search?.pageIndex || 1}
-      &pageSize=${search?.pageSize || 12}`;
+      &pageSize=${search?.pageSize || 12}
+      &sortBy=${search?.sortBy || 200}`;
     return axiosClient.get(url);
   },
 };

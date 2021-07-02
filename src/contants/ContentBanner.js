@@ -1,18 +1,40 @@
+import vansBackground1 from "../assets/images/vans-background-1.jpg";
+import vansBackground2 from "../assets/images/vans-background-2.jpg";
+import vansBackground3 from "../assets/images/vans-background-3.jpg";
+import vansBackground4 from "../assets/images/vans-background-4.jpg";
+import converseBackground1 from "../assets/images/converse-background-1.jpg";
+import converseBackground2 from "../assets/images/converse-background-2.jpg";
+import converseBackground3 from "../assets/images/converse-background-3.jpg";
+
 const contentBanner = [
-    {
-        title: 'Designer Wall Clocks',
-        image: 'http://demo.posthemes.com/pos_ecolife_decoration/decoration3/modules/posslideshows/images/6639812e7c57490b96d3117cf8d6991421a0fbd6_1_3.jpg',
-        description: 'SPECIAL OFFER! UP TO 75% OFF',
-        button: 'SHOP NOW'
-    },
-    {
-        title: 'Morden Ceiling Lights',
-        image: 'http://demo.posthemes.com/pos_ecolife_decoration/decoration3/modules/posslideshows/images/fa49460cb34e07f9611f4af6f495aab307107fc9_2_3.jpg',
-        description: 'BEAT LIGHT COPPER SHADE CHANDELIER',
-        button: 'SHOP NOW'
-    }
-]
+  {
+    title: "Van-background-1",
+    image: vansBackground1,
+  },
+  {
+    title: "Van-background-2",
+    image: vansBackground2,
+  },
+  {
+    title: "Van-background-3",
+    image: vansBackground3,
+  },
+  {
+    title: "Van-background-4",
+    image: vansBackground4,
+  },
+  {
+    title: "Converse-background-1",
+    image: converseBackground1,
+  },
+  {
+    title: "Converse-background-2",
+    image: converseBackground2,
+  },
+  {
+    title: "Converse-background-3",
+    image: converseBackground3,
+  },
+];
 
-export default contentBanner
-
-
+export default contentBanner;

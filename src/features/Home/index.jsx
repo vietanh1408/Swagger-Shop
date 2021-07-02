@@ -1,26 +1,22 @@
-import React from 'react'
-import Banner from '../../components/Banner'
-import Categories from './components/Categories'
-import FlashDeal from './components/FlashDeal'
-import HomeBanner from './components/HomeBanner'
+import React from "react";
+
+// components
+import Categories from "./components/Categories";
+import FlashDeal from "./components/FlashDeal";
+import HomeBanner from "./components/HomeBanner";
 function Home() {
+  return (
+    <section id="home-page">
+      {/* home banner */}
+      <HomeBanner />
 
-    return (
-        <section id="home-page">
-            {/* banner */}
-            <Banner />
+      {/* flash deal */}
+      <FlashDeal />
 
-            {/* home banner */}
-            <HomeBanner />
-
-            {/* flash deal */}
-            <FlashDeal />
-
-            {/* categories */}
-            <Categories />
-
-        </section>
-    )
+      {/* categories */}
+      <Categories />
+    </section>
+  );
 }
 
-export default Home
+export default Home;
