@@ -119,7 +119,7 @@ const TopFilter = (props) => {
                 <li
                   key={index}
                   className={`${classes.option} ${
-                    option.value == active ? "active-option" : ""
+                    option.value == active && "active-option"
                   }`}
                   value={option.value}
                   onClick={onChangeSort}

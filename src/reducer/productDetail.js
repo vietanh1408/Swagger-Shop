@@ -9,7 +9,7 @@ const initialState = {
 
 // fetch product by id
 export const fetchProductById = createAsyncThunk(
-  "product/fetchProductById",
+  "productDetail/fetchProductById",
   async (id) => {
     try {
       const response = await productApi.getProductById(id);

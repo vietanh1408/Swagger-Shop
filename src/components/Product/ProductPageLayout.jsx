@@ -5,6 +5,7 @@ import ProductList from "./ProductList";
 import CustomPagination from "../CustomPagination";
 import LeftFilter from "../LeftFilter";
 import TopFilter from "../TopFilter";
+import Banner from "../Banner";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -36,34 +37,38 @@ const useStyles = makeStyles((theme) => ({
 const ProductPageLayout = ({ products, total, isLoading, totalPage }) => {
   const classes = useStyles();
   return (
-    <div className="container pt-5">
-      <Grid container spacing={4}>
-        <Grid
-          item
-          xs={12}
-          sm={4}
-          md={4}
-          lg={3}
-          xl={3}
-          className={classes.filter}
-        >
-          <LeftFilter />
+    <>
+      <Banner />
+
+      <div className="container pt-5">
+        <Grid container spacing={4}>
+          <Grid
+            item
+            xs={12}
+            sm={4}
+            md={4}
+            lg={3}
+            xl={3}
+            className={classes.filter}
+          >
+            <LeftFilter />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={8}
+            lg={9}
+            xl={9}
+            className={classes.productList}
+          >
+            <TopFilter productsLength={total} />
+            <ProductList data={products} loading={isLoading} />
+            <CustomPagination totalPage={totalPage} />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={8}
-          md={8}
-          lg={9}
-          xl={9}
-          className={classes.productList}
-        >
-          <TopFilter productsLength={total} />
-          <ProductList data={products} loading={isLoading} />
-          <CustomPagination totalPage={totalPage} />
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import Rating from "@material-ui/lab/Rating";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Product({ product }) {
+const Product = ({ product }) => {
   return (
     <div className="product">
       <figure>
@@ -20,7 +20,7 @@ function Product({ product }) {
           />
           <img
             className="product-img-back"
-            src={product.poster[1].url}
+            src={product.poster[2].url}
             alt={product.name}
           />
         </div>
@@ -54,6 +54,6 @@ function Product({ product }) {
       <span className="product-price">{`${product.price} VND`}</span>
     </div>
   );
-}
+};
 
 export default Product;

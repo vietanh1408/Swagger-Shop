@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import Logo from "../../assets/images/logo.png";
 // components
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
@@ -38,15 +37,12 @@ function Header() {
                 handleShowMenuMobile={handleShowMenuMobile}
               />
             </div>
-            <div
-              className="col col-md-2 p-lg-0 header-logo"
-              style={{ height: "100%" }}
-            >
+            <div className="col col-md-2 header-logo">
               <span className="logo-word">
                 swagger<i className="far fa-star logo-icon"></i>
               </span>
             </div>
-            <div className="col col-md-5 p-lg-0">
+            <div className="col col-md-5">
               <NavRight />
             </div>
           </div>

@@ -4,9 +4,14 @@ import React from "react";
 import Categories from "./components/Categories";
 import FlashDeal from "./components/FlashDeal";
 import HomeBanner from "./components/HomeBanner";
-function Home() {
+import Banner from "../../components/Banner";
+
+const Home = () => {
   return (
     <section id="home-page">
+      {/* Banner */}
+      <Banner />
+
       {/* home banner */}
       <HomeBanner />
 
@@ -17,6 +22,6 @@ function Home() {
       <Categories />
     </section>
   );
-}
+};
 
 export default Home;

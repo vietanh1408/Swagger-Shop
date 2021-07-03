@@ -1,0 +1,43 @@
+@import "./mixin";
+
+.product-thumbnail {
+  min-height: 500px;
+  width: 100%;
+
+  figure {
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      border: 1px solid $subWhite;
+    }
+  }
+}
+
+.product-infomation {
+  min-height: 500px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.product-thumbnail-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &-item {
+    width: 100%;
+    border: 2px solid $mainGray;
+    cursor: pointer;
+
+    &:hover {
+      border: 3px solid $mainColor;
+    }
+  }
+}
+
+.active-thumbnail {
+  border: 3px solid $mainColor;
+}

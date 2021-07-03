@@ -1,29 +1,7 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { authLogin, authRegister } from "../reducer/authentication";
-import { fb } from "../service/firebase";
-import useFullPageLoader from "./useFullPageLoader";
-
-export const useAuth = () => {
-  const [authUser, setAuthUser] = useState();
-
-  useEffect(() => {
-    const unsubscribe = fb.auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-
-    return unsubscribe;
-  }, []);
-
-  return {
-    authUser,
-  };
-};
+import { toast } from "react-toastify";
 
 export const useAuthLogin = () => {
   const { user, isLoading, isAuthenticated, error } = useSelector(
@@ -34,10 +12,13 @@ export const useAuthLogin = () => {
   const history = useHistory();
 
   const onLogin = async (values) => {
-    await dispatch(authLogin(values));
+    const resultAction = await dispatch(authLogin(values));
 
-    if (isAuthenticated) {
+    if (authLogin.fulfilled.match(resultAction)) {
+      toast.success("Login successfully!");
       history.push("/");
+    } else {
+      toast.error(resultAction.payload.data.error);
     }
   };
 
@@ -52,11 +33,14 @@ export const useAuthRegister = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onRegister = (values) => {
-    dispatch(authRegister(values));
+  const onRegister = async (values) => {
+    const resultAction = await dispatch(authRegister(values));
 
-    if (isAuthenticated) {
+    if (authRegister.fulfilled.match(resultAction)) {
+      toast.success("Register successfully!");
       history.push("/");
+    } else {
+      toast.error(resultAction.payload.data.error);
     }
   };
 

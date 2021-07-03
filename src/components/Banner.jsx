@@ -21,11 +21,7 @@ function Banner() {
             className="banner-slide"
             style={{ transform: `translateX(${x}%)` }}
           >
-            <img
-              src={item.image}
-              alt={item.title}
-              style={{ width: "100%", height: "500px", objectFit: "cover" }}
-            />
+            <img className="slide-image" src={item.image} alt={item.title} />
           </div>
         );
       })}

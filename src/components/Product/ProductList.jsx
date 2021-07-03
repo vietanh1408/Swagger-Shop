@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 // components
 import Product from "./Product";
-import ProductListSkeleton from "./ProductListSkeleton";
+import ProductListSkeleton from "../Skeleton/ProductListSkeleton";
 
 const ProductList = ({ data, loading }) => {
   const { user } = useSelector((state) => state.authentication);

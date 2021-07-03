@@ -1,20 +1,23 @@
+// libs
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+
+// components
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { routes } from "./routes";
-import "./scss/index.scss";
-import ProtectedRoute from "./hocs/ProtectedRoute";
-import Banner from "./components/Banner";
 
-function App() {
+// routes
+import ProtectedRoute from "./hocs/ProtectedRoute";
+import { routes } from "./routes";
+
+// scss
+import "./scss/index.scss";
+
+const App = () => {
   return (
     <div className="app">
       {/* header */}
       <Header />
-
-      {/* Banner */}
-      <Banner />
 
       {/* content */}
 
@@ -49,6 +52,6 @@ function App() {
       {/* {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>} */}
     </div>
   );
-}
+};
 
 export default App;

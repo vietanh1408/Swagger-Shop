@@ -11,12 +11,12 @@ const initialState = {
 // login
 export const authLogin = createAsyncThunk(
   "authentication/login",
-  async (data) => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = await authApi.login(data);
       return response;
     } catch (err) {
-      return err.response;
+      return rejectWithValue(err.response);
     }
   }
 );
@@ -24,13 +24,12 @@ export const authLogin = createAsyncThunk(
 // register
 export const authRegister = createAsyncThunk(
   "authentication/register",
-  async (data) => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = await authApi.register(data);
       return response;
     } catch (err) {
-      console.log("err..........", err.response);
-      return err.response;
+      return rejectWithValue(err.response);
     }
   }
 );
