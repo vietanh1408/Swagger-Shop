@@ -4,14 +4,13 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 // components
 import SearchBar from "../SearchBar";
 import SettingMenu from "./SettingMenu";
 
-function NavRight() {
+const NavRight = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   const screenWidth = window.innerWidth;
@@ -35,9 +34,6 @@ function NavRight() {
     setShowSearchBar(!showSearchBar);
   };
 
-  const wishlist = useSelector((state) => state.wishlist);
-  const cartList = useSelector((state) => state.cart.list);
-
   return (
     <>
       <ul className="header__setting-list">
@@ -52,7 +48,7 @@ function NavRight() {
           <Link to="">
             <Badge
               color="secondary"
-              badgeContent={wishlist?.length}
+              badgeContent={1}
               anchorOrigin={{
                 vertical: "bottom",
                 horizontal: "right",
@@ -66,7 +62,7 @@ function NavRight() {
           <Link to="/cart">
             <Badge
               color="secondary"
-              badgeContent={cartList?.length}
+              badgeContent={1}
               anchorOrigin={{
                 vertical: "bottom",
                 horizontal: "right",
@@ -82,6 +78,6 @@ function NavRight() {
       </ul>
     </>
   );
-}
+};
 
 export default NavRight;

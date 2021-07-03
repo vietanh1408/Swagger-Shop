@@ -20,7 +20,6 @@ const App = () => {
       <Header />
 
       {/* content */}
-
       <Switch>
         {routes.map((item, index) => {
           if (item.isProtected) {
@@ -47,9 +46,6 @@ const App = () => {
 
       {/* footer */}
       <Footer />
-
-      {/* btn back to top */}
-      {/* {showBtn && <i className="fas fa-arrow-circle-up btn-back-to-top" onClick={handleBackToTop}></i>} */}
     </div>
   );
 };

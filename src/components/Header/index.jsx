@@ -4,27 +4,26 @@ import React, { useEffect, useState } from "react";
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
 
-function Header() {
+const Header = () => {
   const [isScroll, setIsScroll] = useState(false);
 
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-
     if (currentScrollY > 0) {
       setIsScroll(true);
     } else {
       setIsScroll(false);
     }
   };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, []);
-
   const handleShowMenuMobile = () => {
     setOpenMenu(!openMenu);
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -52,6 +51,6 @@ function Header() {
       {openMenu && <div className="modal" onClick={handleShowMenuMobile}></div>}
     </>
   );
-}
+};
 
 export default Header;

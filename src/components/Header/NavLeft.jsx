@@ -1,8 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function NavLeft({ openMenu, handleShowMenuMobile }) {
+const NavLeft = ({ openMenu, handleShowMenuMobile }) => {
   const handleShowProductsMenu = () => {
     const productsMenu = document.querySelector(
       ".header__nav-left__menu-decorations"
@@ -16,9 +15,6 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
     );
     productsMenu.style.display = "none";
   };
-
-  const wishlist = useSelector((state) => state.wishlist);
-  const categoryList = useSelector((state) => state.product.categories);
 
   return (
     <>
@@ -40,7 +36,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
           </span>
           <span className="mt-1">
             <i className="far fa-heart mr-2"></i>
-            Wishlist (<span>{wishlist.length}</span>)
+            Wishlist (<span>1</span>)
           </span>
         </li>
         <li className="header__menu-list__item">
@@ -66,15 +62,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
             className="header__nav-left__menu-decorations"
             onMouseOver={handleShowProductsMenu}
             onMouseLeave={handleHideProductMenu}
-          >
-            {categoryList?.map((item, index) => {
-              return (
-                <li key={index}>
-                  <Link to={`/products/category/${item}`}>{item}</Link>
-                </li>
-              );
-            })}
-          </ul>
+          ></ul>
         </li>
         <li className="header__menu-list__item" onClick={handleShowMenuMobile}>
           <NavLink to="/contact">Contact Us</NavLink>
@@ -85,7 +73,7 @@ function NavLeft({ openMenu, handleShowMenuMobile }) {
       </ul>
     </>
   );
-}
+};
 
 export default NavLeft;
 

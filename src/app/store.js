@@ -1,9 +1,5 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import wishlistReducer from "./../features/WishList/wishlistSlice";
-import loadingReducer from "./../features/Loading/loadingSlice";
-import cartReducer from "./../features/Cart/cartSlice";
-
 // libs
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
@@ -16,10 +12,6 @@ import productDetailReducer from "../reducer/productDetail";
 
 const rootReducer = combineReducers({
   product: productReducer,
-  wishlist: wishlistReducer,
-  loading: loadingReducer,
-
-  cart: cartReducer,
   authentication: authReducer,
   search: searchReducer,
   productDetail: productDetailReducer,

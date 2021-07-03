@@ -1,18 +1,7 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  IconButton,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { addToCart } from "../../Cart/cartSlice";
 import Product from "../../../components/Product/Product";
 
 const useStyles = makeStyles((theme) => ({
@@ -53,15 +42,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProductSlider() {
+const ProductSlider = () => {
   const productList = useSelector((state) => state.product.list);
   const [productIndex, setProductIndex] = useState(0);
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
+  const handleAddToCart = (product) => {};
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow arrow-next" onClick={onClick}>
@@ -132,6 +119,6 @@ function ProductSlider() {
       </Slider>
     </div>
   );
-}
+};
 
 export default ProductSlider;
