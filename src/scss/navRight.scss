@@ -27,7 +27,7 @@
     }
     div {
       flex: 2;
-      background-color: white;
+      background-color: $mainWhite;
       width: 100%;
 
       select {
@@ -40,7 +40,7 @@
         option {
           font-weight: normal !important;
           display: block !important;
-          white-space: pre !important;
+          $mainWhite-space: pre !important;
           min-height: 1.2em !important;
           padding: 0px 2px 1px !important;
           width: 150% !important;
@@ -51,7 +51,7 @@
       flex: 1;
       background-color: $mainColor;
       border: none;
-      color: white;
+      color: $mainWhite;
       transition: 0.5s;
       padding: 0 !important;
 
@@ -63,7 +63,7 @@
   }
 
   a {
-    color: black;
+    color: $mainBlack;
   }
 
   &:hover a {

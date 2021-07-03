@@ -1,10 +1,11 @@
 // libs
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import SearchIcon from "@material-ui/icons/Search";
 import ShareIcon from "@material-ui/icons/Share";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import Rating from "@material-ui/lab/Rating";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Product({ product }) {
   return (
@@ -24,18 +25,21 @@ function Product({ product }) {
           />
         </div>
         <div className="product-actions">
-          <p className="product-actions-icon">
+          <span className="product-actions-icon">
             <ShoppingCartIcon />
-          </p>
-          <p className="product-actions-icon">
-            <SearchIcon />
-          </p>
-          <p className="product-actions-icon">
+          </span>
+          <Link
+            to={`/products/${product._id}`}
+            className="product-actions-icon"
+          >
+            <VisibilityIcon />
+          </Link>
+          <span className="product-actions-icon">
             <FavoriteIcon />
-          </p>
-          <p className="product-actions-icon">
+          </span>
+          <span className="product-actions-icon">
             <ShareIcon />
-          </p>
+          </span>
         </div>
       </figure>
       <h4 className="product-title">{product.name}</h4>

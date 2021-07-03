@@ -1,4 +1,35 @@
 @import "./mixin";
+
+@keyframes headerFixed {
+  from {
+    top: -100%;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+@keyframes showMenuList {
+  from {
+    left: -22.5rem;
+  }
+
+  to {
+    left: -0.1rem;
+  }
+}
+
+@keyframes closeMenuList {
+  from {
+    left: -0.1rem;
+  }
+
+  to {
+    left: -22.5rem;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .header {
     padding: 1.4375rem 0;
@@ -114,36 +145,6 @@
   }
 }
 
-@keyframes headerFixed {
-  from {
-    top: -100%;
-  }
-
-  to {
-    top: 0;
-  }
-}
-
-@keyframes showMenuList {
-  from {
-    left: -22.5rem;
-  }
-
-  to {
-    left: -0.1rem;
-  }
-}
-
-@keyframes closeMenuList {
-  from {
-    left: -0.1rem;
-  }
-
-  to {
-    left: -22.5rem;
-  }
-}
-
 @media screen and (max-width: 960px) {
   .container {
     padding: 0;
@@ -168,7 +169,7 @@
       display: block;
       position: absolute;
       top: -0.6rem;
-      background-color: white;
+      background-color: $mainWhite;
       width: 22rem;
       height: 1000px;
       z-index: 1000;
@@ -199,7 +200,7 @@
         align-items: center;
         justify-content: space-between;
         background-color: #253237;
-        color: white;
+        color: $mainWhite;
         font-weight: bold;
         font-size: 1rem;
       }
@@ -209,7 +210,7 @@
       display: block;
       position: absolute;
       top: -0.6rem;
-      background-color: white;
+      background-color: $mainWhite;
       width: 22rem;
       height: 1000px;
       z-index: 1000;

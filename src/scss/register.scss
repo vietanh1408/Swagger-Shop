@@ -135,6 +135,6 @@ input[type="checkbox"]::before {
 }
 
 .error-message {
-  color: red;
+  color: $mainRed;
   text-indent: 40px;
 }

@@ -73,7 +73,11 @@ function UserInfo(props) {
         />
 
         <div className="login-form__btn">
-          <Button type="submit" className={classes.button} size="large">
+          <Button
+            type="submit"
+            style={{ backgroundColor: "#b79b6c", color: "#fff" }}
+            size="large"
+          >
             Check out
           </Button>
         </div>

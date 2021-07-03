@@ -3,13 +3,16 @@ import wishlistReducer from "./../features/WishList/wishlistSlice";
 import loadingReducer from "./../features/Loading/loadingSlice";
 import cartReducer from "./../features/Cart/cartSlice";
 
+// libs
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
 
+// reducers
 import productReducer from "../reducer/product";
 import authReducer from "./../reducer/authentication";
 import searchReducer from "./../reducer/search";
-import thunk from "redux-thunk";
+import productDetailReducer from "../reducer/productDetail";
 
 const rootReducer = combineReducers({
   product: productReducer,
@@ -19,6 +22,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   authentication: authReducer,
   search: searchReducer,
+  productDetail: productDetailReducer,
 });
 
 const persistConfig = {

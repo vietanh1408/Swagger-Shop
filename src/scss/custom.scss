@@ -1,9 +1,21 @@
 @import "./mixin";
 .active-option {
   background-color: $mainColor;
-  color: "#fff";
+  color: $mainWhite;
 }
 
 label {
   margin: 0;
+}
+
+.logo-word {
+  font-family: "Bungee", cursive;
+  font-size: 1.5rem;
+  position: relative;
+}
+.logo-icon {
+  position: absolute;
+  bottom: 1rem;
+  right: -1.3rem;
+  transform: rotate(45deg);
 }

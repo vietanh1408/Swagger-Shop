@@ -1,6 +1,6 @@
 // libs
 import React from "react";
-import ProductPageLayout from "../../../components/ProductPageLayout";
+import ProductPageLayout from "../../../components/Product/ProductPageLayout";
 // custom hooks
 import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
 

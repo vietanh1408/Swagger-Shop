@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router";
 import LeftFilter from "../../../components/LeftFilter";
 import TopFilter from "../../../components/TopFilter";
-import ProductList from "../ProductList";
+import ProductList from "../../../components/Product/ProductList";
 
 const useStyles = makeStyles((theme) => ({
   root: {},

@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // components
-import { logout } from "../../../reducer/authentication";
+import { logout } from "../../reducer/authentication";
 
 const SettingMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);

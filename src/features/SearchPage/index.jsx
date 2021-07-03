@@ -1,6 +1,6 @@
 import React from "react";
 import EmptyResult from "../../components/EmptyResult";
-import ProductPageLayout from "../../components/ProductPageLayout";
+import ProductPageLayout from "../../components/Product/ProductPageLayout";
 import { useSearchReferences } from "../../hooks/useSearchParams";
 
 function SearchPage() {

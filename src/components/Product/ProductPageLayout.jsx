@@ -1,10 +1,10 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 // components
-import ProductList from "../features/Products/ProductList";
-import CustomPagination from "./CustomPagination";
-import LeftFilter from "./LeftFilter";
-import TopFilter from "./TopFilter";
+import ProductList from "./ProductList";
+import CustomPagination from "../CustomPagination";
+import LeftFilter from "../LeftFilter";
+import TopFilter from "../TopFilter";
 
 const useStyles = makeStyles((theme) => ({
   root: {},

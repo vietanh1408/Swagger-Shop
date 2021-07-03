@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import NavLeft from "./components/NavLeft";
-import NavRight from "./components/NavRight";
-import logo from "../../assets/images/logo.png";
+
+import Logo from "../../assets/images/logo.png";
+// components
+import NavLeft from "./NavLeft";
+import NavRight from "./NavRight";
 
 function Header() {
   const [isScroll, setIsScroll] = useState(false);
@@ -40,11 +42,9 @@ function Header() {
               className="col col-md-2 p-lg-0 header-logo"
               style={{ height: "100%" }}
             >
-              <img
-                src="//bizweb.dktcdn.net/100/347/923/themes/742041/assets/logo.png?1619251219942"
-                alt="logo"
-                style={{ height: "100%" }}
-              />
+              <span className="logo-word">
+                swagger<i className="far fa-star logo-icon"></i>
+              </span>
             </div>
             <div className="col col-md-5 p-lg-0">
               <NavRight />

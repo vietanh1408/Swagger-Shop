@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { addToCart } from "../../Cart/cartSlice";
-import Product from "../../../components/Product";
+import Product from "../../../components/Product/Product";
 
 const useStyles = makeStyles((theme) => ({
   root: {

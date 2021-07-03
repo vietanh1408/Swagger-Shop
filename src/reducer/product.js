@@ -13,10 +13,10 @@ export const fetchAllProduct = createAsyncThunk(
   "product/fetchAllProduct",
   async (value) => {
     try {
-      const response = await productApi.getProduct(value);
+      const response = await productApi.getProducts(value);
       return response;
     } catch (err) {
-      console.log("loi..........", err);
+      return err.response;
     }
   }
 );

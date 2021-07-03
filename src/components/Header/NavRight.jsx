@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 // components
-import SearchBar from "../../SearchBar";
+import SearchBar from "../SearchBar";
 import SettingMenu from "./SettingMenu";
 
 function NavRight() {

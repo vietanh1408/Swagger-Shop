@@ -1,9 +1,9 @@
 @import "./mixin";
 .filter-by {
   font-size: 1.3rem;
-  color: black;
+  color: $mainBlack;
   padding-bottom: 1.2rem;
-  border-bottom: 2px solid #c4c4c4;
+  border-bottom: 2px solid $mainGray;
 }
 
 .filter-categories {
