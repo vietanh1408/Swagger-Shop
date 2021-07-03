@@ -110,3 +110,25 @@
     }
   }
 }
+
+// custom
+.owl-prev {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  font-size: 3rem !important;
+  z-index: 5;
+}
+.owl-next {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  font-size: 3rem !important;
+  z-index: 5;
+}
+
+.owl-theme .owl-nav {
+  &:hover {
+    background-color: $mainColor !important;
+  }
+}

@@ -10,7 +10,7 @@ const ProductInformation = () => {
   const { product, isLoading, thumbnail, handleChangeImage } =
     useGetProductById();
 
-  if (isLoading) return <ProductDetailSkeleton />;
+  if (isLoading || !product) return <ProductDetailSkeleton />;
 
   return (
     <div className="container py-5 d-flex justify-content-center align-items-center">
