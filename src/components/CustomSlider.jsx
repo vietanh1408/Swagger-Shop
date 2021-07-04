@@ -50,6 +50,12 @@ const CustomSlider = (props) => {
         navClass={["prev-slide", "next-slide"]}
         lazyLoad={lazyLoad}
         slideBy={slideBy}
+        responsive={{
+          0: { items: 1 },
+          450: { items: 1 },
+          600: { items: 2 },
+          1000: { items: total },
+        }}
       >
         {children ??
           items.map((product, index) => {

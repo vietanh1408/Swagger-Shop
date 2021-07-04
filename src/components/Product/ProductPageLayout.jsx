@@ -6,6 +6,8 @@ import CustomPagination from "../CustomPagination";
 import LeftFilter from "../LeftFilter";
 import TopFilter from "../TopFilter";
 import Banner from "../Banner";
+import CustomSlider from "../CustomSlider";
+import { useGetProductSlide } from "../../hooks/useGetProductSlide";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -35,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductPageLayout = ({ products, total, isLoading, totalPage }) => {
+  const sliders = useGetProductSlide();
+
   const classes = useStyles();
   return (
     <>
@@ -68,6 +72,22 @@ const ProductPageLayout = ({ products, total, isLoading, totalPage }) => {
           </Grid>
         </Grid>
       </div>
+
+      <CustomSlider
+        container={true}
+        title="You Might Also Like"
+        subTitle="Add Related products to weekly line up"
+        items={sliders}
+        total={4}
+        autoPlay={true}
+        time={2000}
+        loop={true}
+        nav={false}
+        dots={true}
+        margin={20}
+        lazyLoad={true}
+        slideBy={2}
+      />
     </>
   );
 };

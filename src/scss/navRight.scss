@@ -4,62 +4,7 @@
   position: relative;
   z-index: 999;
   form {
-    position: absolute;
-    top: 140%;
-    right: 0;
-    width: 33.8rem;
-    height: 2.8rem;
-    background-color: $mainColor;
-    border-radius: 30px;
-    overflow: hidden;
-    border: 2px solid $mainColor;
-
-    input {
-      flex: 5;
-      outline: none;
-      border: none;
-      padding: 0.5rem 1.375rem;
-      font-size: 0.9rem;
-
-      &::-webkit-input-placeholder {
-        color: #7a7a7a;
-      }
-    }
-    div {
-      flex: 2;
-      background-color: $mainWhite;
-      width: 100%;
-
-      select {
-        outline: none;
-        border: none;
-        height: 100%;
-        color: #253237;
-        font-size: 0.9rem;
-
-        option {
-          font-weight: normal !important;
-          display: block !important;
-          $mainWhite-space: pre !important;
-          min-height: 1.2em !important;
-          padding: 0px 2px 1px !important;
-          width: 150% !important;
-        }
-      }
-    }
-    button {
-      flex: 1;
-      background-color: $mainColor;
-      border: none;
-      color: $mainWhite;
-      transition: 0.5s;
-      padding: 0 !important;
-
-      &:hover {
-        background-color: #253237;
-        border-color: #253237;
-      }
-    }
+    @extend %search-bar-form;
   }
 
   a {
@@ -70,6 +15,33 @@
     color: $mainColor;
     cursor: pointer;
   }
+}
+
+.search-bar-mobile {
+  top: 40% !important;
+  width: 21.5rem !important;
+  box-sizing: border-box !important;
+
+  input {
+    flex: 3 !important;
+    width: 30px !important;
+    padding: 0.6rem !important;
+
+    &::-webkit-input-placeholder {
+      color: #7a7a7a !important;
+      font-size: 0.65rem !important;
+    }
+  }
+
+  div {
+    flex: 1 !important;
+  }
+
+  button {
+    flex: 1 !important;
+    width: 10px !important;
+  }
+  @extend %search-bar-form;
 }
 
 @media screen and (max-width: 960px) {
@@ -98,32 +70,5 @@
 
   .header {
     position: relative;
-  }
-  .header__setting-list__item {
-    form {
-      top: 40%;
-      width: 20rem;
-      box-sizing: border-box;
-
-      input {
-        flex: 3;
-        width: 30px;
-        padding: 0.6rem;
-
-        &::-webkit-input-placeholder {
-          color: #7a7a7a;
-          font-size: 0.65rem;
-        }
-      }
-
-      div {
-        flex: 1;
-      }
-
-      button {
-        flex: 1;
-        width: 10px;
-      }
-    }
   }
 }

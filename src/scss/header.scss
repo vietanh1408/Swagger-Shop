@@ -140,14 +140,18 @@
     box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
   }
 
-  .modal {
-    display: none;
-  }
+  // .modal {
+  //   display: none;
+  // }
 }
 
 @media screen and (max-width: 960px) {
   .container {
     padding: 0;
+  }
+
+  .search-icon {
+    display: none !important;
   }
 
   .header {
@@ -171,7 +175,7 @@
       top: -0.6rem;
       background-color: $mainWhite;
       width: 22rem;
-      height: 1000px;
+      height: 99999px;
       z-index: 1000;
       animation: showMenuList 1s ease forwards;
 
@@ -212,7 +216,7 @@
       top: -0.6rem;
       background-color: $mainWhite;
       width: 22rem;
-      height: 1000px;
+      height: 99999px;
       z-index: 1000;
       animation: closeMenuList 1s ease forwards;
     }

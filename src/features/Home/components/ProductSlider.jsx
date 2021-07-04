@@ -19,7 +19,6 @@ const ProductSlider = () => {
       autoplay={true}
       autoplayTimeout={3000}
       autoplayHoverPause={true}
-      items={2}
       loop={true}
       margin={20}
       dots={false}
@@ -27,6 +26,12 @@ const ProductSlider = () => {
       navClass={["prev-slide", "next-slide"]}
       lazyLoad={true}
       slideBy={2}
+      responsive={{
+        0: { items: 1 },
+        450: { items: 1 },
+        600: { items: 2 },
+        1000: { items: 2 },
+      }}
     >
       {rows?.map((col, index) => {
         return (

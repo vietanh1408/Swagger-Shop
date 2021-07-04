@@ -13,23 +13,6 @@ import SettingMenu from "./SettingMenu";
 const NavRight = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
-  const screenWidth = window.innerWidth;
-
-  const [isScreenMobile, setIsScreenMobile] = useState(false);
-
-  useEffect(() => {
-    if (screenWidth <= 960) {
-      setIsScreenMobile(true);
-    }
-
-    if (screenWidth > 960) {
-      setIsScreenMobile(false);
-    }
-    if (isScreenMobile) {
-      setShowSearchBar(true);
-    }
-  }, [screenWidth]);
-
   const handleShowSearchBar = () => {
     setShowSearchBar(!showSearchBar);
   };
@@ -38,11 +21,8 @@ const NavRight = () => {
     <>
       <ul className="header__setting-list">
         <li className="header__setting-list__item">
-          {!isScreenMobile && <SearchIcon onClick={handleShowSearchBar} />}
-          <SearchBar
-            showSearchBar={showSearchBar}
-            isScreenMobile={isScreenMobile}
-          />
+          <SearchIcon onClick={handleShowSearchBar} className="search-icon" />
+          <SearchBar showSearchBar={showSearchBar} />
         </li>
         <li className="header__setting-list__item">
           <Link to="">

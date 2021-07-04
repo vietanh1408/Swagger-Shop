@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSearchParams, useUpdateSearch } from "../hooks/useSearchParams";
 
-function SearchBar({ showSearchBar }) {
+function SearchBar({ showSearchBar, classText }) {
   const location = useLocation();
 
   const { keyword } = useSearchParams(location.search);
@@ -26,7 +26,7 @@ function SearchBar({ showSearchBar }) {
     <>
       {showSearchBar && (
         <form
-          className="d-flex justify-content-between"
+          className={`d-flex justify-content-between ${classText}`}
           onSubmit={handleSearchSubmit}
         >
           <input

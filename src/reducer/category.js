@@ -32,7 +32,6 @@ export const fetchProductByCategory = createAsyncThunk(
         slug,
         searchParams,
       });
-      console.log("response.............", response);
       return response;
     } catch (err) {
       return err.response;

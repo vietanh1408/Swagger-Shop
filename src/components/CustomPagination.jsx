@@ -21,16 +21,14 @@ const CustomPagination = (props) => {
 
   return (
     <div className="container d-flex justify-content-center py-5">
-      <div className="row">
-        <Pagination
-          count={totalPage}
-          page={+pageIndex || 1}
-          variant="outlined"
-          size="large"
-          shape="rounded"
-          onChange={onChangePageIndex}
-        />
-      </div>
+      <Pagination
+        count={totalPage}
+        page={+pageIndex || 1}
+        variant="outlined"
+        size="large"
+        shape="rounded"
+        onChange={onChangePageIndex}
+      />
     </div>
   );
 };
