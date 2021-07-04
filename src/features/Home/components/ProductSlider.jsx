@@ -16,8 +16,9 @@ const ProductSlider = () => {
   return (
     <OwlCarousel
       className="owl-theme"
-      autoPlay={true}
-      autoplayTimeout={2000}
+      autoplay={true}
+      autoplayTimeout={3000}
+      autoplayHoverPause={true}
       items={2}
       loop={true}
       margin={20}
@@ -25,6 +26,7 @@ const ProductSlider = () => {
       nav={true}
       navClass={["prev-slide", "next-slide"]}
       lazyLoad={true}
+      slideBy={2}
     >
       {rows?.map((col, index) => {
         return (

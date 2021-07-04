@@ -1,39 +1,32 @@
-import React, { useState } from "react";
+// libs
+import React from "react";
+// constants
 import contentBanner from "../contants/ContentBanner";
+// components
+import CustomSlider from "./CustomSlider";
 
 function Banner() {
-  const [x, setX] = useState(0);
-
-  const handleClickPrev = () => {
-    x === 0 ? setX(-100 * (contentBanner.length - 1)) : setX(x + 100);
-  };
-
-  const handleClickNext = () => {
-    x === -100 * (contentBanner.length - 1) ? setX(0) : setX(x - 100);
-  };
-
   return (
-    <div className="carousel-banner">
-      {contentBanner.map((item, index) => {
+    <CustomSlider
+      children={contentBanner.map((item, index) => {
         return (
-          <div
-            key={index}
-            className="banner-slide"
-            style={{ transform: `translateX(${x}%)` }}
-          >
+          <div key={index} className="banner-slide">
             <img className="slide-image" src={item.image} alt={item.title} />
           </div>
         );
       })}
-
-      {/* button */}
-      <button id="prev-slide" onClick={handleClickPrev}>
-        <i className="fas fa-chevron-circle-left"></i>
-      </button>
-      <button id="next-slide" onClick={handleClickNext}>
-        <i className="fas fa-chevron-circle-right"></i>
-      </button>
-    </div>
+      container={false}
+      items={contentBanner}
+      total={1}
+      autoPlay={true}
+      time={4000}
+      loop={true}
+      nav={false}
+      dots={true}
+      margin={5}
+      lazyLoad={true}
+      sliderBy={1}
+    />
   );
 }
 

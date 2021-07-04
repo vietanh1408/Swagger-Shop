@@ -4,7 +4,7 @@ import React from "react";
 import { useGetProductSlide } from "../../hooks/useGetProductSlide";
 // components
 import Banner from "../../components/Banner";
-import CustomSlider from "../../components/CustomSilder";
+import CustomSlider from "../../components/CustomSlider";
 import Categories from "./components/Categories";
 import FlashDeal from "./components/FlashDeal";
 import HomeBanner from "./components/HomeBanner";
@@ -24,6 +24,7 @@ const Home = () => {
       <FlashDeal />
 
       <CustomSlider
+        container={true}
         title="You Might Also Like"
         subTitle="Add Related products to weekly line up"
         items={sliders}

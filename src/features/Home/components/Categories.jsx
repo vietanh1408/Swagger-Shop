@@ -1,57 +1,35 @@
-import { makeStyles } from "@material-ui/core";
+// libs
+import { Skeleton } from "@material-ui/lab";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useGetAllCategory } from "../../../hooks/useGetCategory";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexWrap: "wrap",
-  },
-  category: {
-    width: "13rem",
-    height: "13rem",
-    margin: "1rem",
+const Categories = () => {
+  const [categories, isLoading] = useGetAllCategory();
 
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "10px",
-
-    fontSize: "1rem",
-    fontFamily: '"Gill Sans", sans-serif',
-    fontWeight: "bold",
-    textTransform: "uppercase",
-
-    cursor: "pointer",
-    transition: "transform 1s",
-    boxShadow: "1px 1px 10px #888",
-
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
-  },
-}));
-
-function Categories() {
-  const classes = useStyles();
-  const categoryList = useSelector((state) => state.product.categories);
+  if (isLoading) return <Skeleton />;
 
   return (
-    <div className="container my-5">
-      <div className={classes.root}>
-        {categoryList?.map((item, index) => {
+    <div className="container">
+      <div className="row w-100">
+        {categories?.map((category, index) => {
           return (
-            <div className={classes.category} key={index}>
-              <Link to={`/products/category/${item}`}>{item}</Link>
+            <div className="col-2" key={index}>
+              <Link to={`/categories/${category.slug}`}>
+                <figure className="d-flex justify-content-center align-items-center flex-column w-100 category-logo">
+                  <img
+                    src={category.icon}
+                    alt={category.slug}
+                    style={{ width: "80%" }}
+                  />
+                </figure>
+              </Link>
             </div>
           );
         })}
       </div>
     </div>
   );
-}
+};
 
 export default Categories;

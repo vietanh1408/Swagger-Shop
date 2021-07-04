@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 // components
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import BackToTop from "./components/BacktoTop";
 
 // routes
 import ProtectedRoute from "./hocs/ProtectedRoute";
@@ -48,6 +49,7 @@ const App = () => {
 
       {/* footer */}
       <Footer />
+      <BackToTop />
     </div>
   );
 };

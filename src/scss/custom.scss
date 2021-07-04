@@ -23,7 +23,7 @@ label {
 // custom slider
 .prev-slide {
   @extend %btn-styles;
-  top: 48%;
+  top: 48% !important;
   left: -2rem;
   color: $mainBlack;
   &:hover {
@@ -33,7 +33,7 @@ label {
 
 .next-slide {
   @extend %btn-styles;
-  top: 48%;
+  top: 48% !important;
   right: -2rem;
   color: $mainBlack;
   &:hover {
@@ -49,4 +49,27 @@ label {
 .slider-subtitle {
   color: $textColor;
   font-size: 1rem;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  opacity: 0;
+
+  font-size: 2.5rem;
+  cursor: pointer;
+
+  &:hover {
+    color: $mainColor;
+  }
+}
+
+.category-logo {
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }

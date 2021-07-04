@@ -9,18 +9,20 @@ import productReducer from "../reducer/product";
 import authReducer from "./../reducer/authentication";
 import searchReducer from "./../reducer/search";
 import productDetailReducer from "../reducer/productDetail";
+import categoryReducer from "../reducer/category";
 
 const rootReducer = combineReducers({
-  product: productReducer,
   authentication: authReducer,
-  search: searchReducer,
+  product: productReducer,
+  category: categoryReducer,
   productDetail: productDetailReducer,
+  search: searchReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["authentication", "product"],
+  whitelist: ["authentication", "product", "category"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

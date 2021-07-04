@@ -43,7 +43,6 @@ function Footer() {
               <img
                 src="http://demo.posthemes.com/pos_ecolife_decoration/img/cms/payment.png"
                 alt="footer-logo"
-                className="w-100"
               ></img>
             </div>
           </div>
