@@ -6,6 +6,7 @@ const initialState = {
   isLoading: false,
   total: 0,
   totalPage: 0,
+  sliders: [],
 };
 
 // fetch all product
@@ -14,6 +15,19 @@ export const fetchAllProduct = createAsyncThunk(
   async (value) => {
     try {
       const response = await productApi.getProducts(value);
+      return response;
+    } catch (err) {
+      return err.response;
+    }
+  }
+);
+
+// fetch Product slide
+export const fetchProductSlide = createAsyncThunk(
+  "product/fetchProductSlide",
+  async () => {
+    try {
+      const response = await productApi.getProductSlide();
       return response;
     } catch (err) {
       return err.response;
@@ -39,6 +53,17 @@ export const productSlice = createSlice({
       state.isLoading = false;
       state.items = [];
       state.total = 0;
+    });
+
+    builder.addCase(fetchProductSlide.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchProductSlide.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.sliders = action.payload;
+    });
+    builder.addCase(fetchProductSlide.rejected, (state, action) => {
+      state.isLoading = false;
     });
   },
 });

@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 function Categories() {
   const classes = useStyles();
   const categoryList = useSelector((state) => state.product.categories);
-  const dispatch = useDispatch();
 
   return (
     <div className="container my-5">

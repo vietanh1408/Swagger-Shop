@@ -5,3 +5,23 @@ $mainRed: #ff0000;
 $mainGray: #c4c4c4;
 
 $subWhite: #ebebeb;
+$subBlack: #1f262a;
+
+$textColor: #707070;
+
+%btn-styles {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5%;
+  height: 100%;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: $mainColor;
+  outline: none;
+
+  &:hover {
+    color: #253237;
+  }
+}

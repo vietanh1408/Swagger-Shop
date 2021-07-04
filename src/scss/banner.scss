@@ -17,23 +17,6 @@
   transition: 0.5s;
 }
 
-%btn-styles {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5%;
-  height: 100%;
-  background: none;
-  border: none;
-  font-size: 3rem;
-  color: $mainColor;
-  outline: none;
-
-  &:hover {
-    color: #253237;
-  }
-}
-
 #prev-slide {
   left: 0;
   @extend %btn-styles;
@@ -108,27 +91,5 @@
       font-weight: bold;
       outline: none;
     }
-  }
-}
-
-// custom
-.owl-prev {
-  position: absolute;
-  top: 40%;
-  left: 0;
-  font-size: 3rem !important;
-  z-index: 5;
-}
-.owl-next {
-  position: absolute;
-  top: 40%;
-  right: 0;
-  font-size: 3rem !important;
-  z-index: 5;
-}
-
-.owl-theme .owl-nav {
-  &:hover {
-    background-color: $mainColor !important;
   }
 }

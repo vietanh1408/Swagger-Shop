@@ -19,3 +19,34 @@ label {
   right: -1.3rem;
   transform: rotate(45deg);
 }
+
+// custom slider
+.prev-slide {
+  @extend %btn-styles;
+  top: 48%;
+  left: -2rem;
+  color: $mainBlack;
+  &:hover {
+    color: $mainColor;
+  }
+}
+
+.next-slide {
+  @extend %btn-styles;
+  top: 48%;
+  right: -2rem;
+  color: $mainBlack;
+  &:hover {
+    color: $mainColor;
+  }
+}
+
+.slider-title {
+  color: $subBlack;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+.slider-subtitle {
+  color: $textColor;
+  font-size: 1rem;
+}

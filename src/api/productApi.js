@@ -11,6 +11,10 @@ const productApi = {
     const url = `/products/${id}`;
     return axiosClient.get(url);
   },
+  getProductSlide: () => {
+    const url = "/products/slide";
+    return axiosClient.get(url);
+  },
 };
 
 export default productApi;
