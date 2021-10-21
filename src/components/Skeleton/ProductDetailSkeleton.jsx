@@ -6,7 +6,7 @@ const ProductDetailSkeleton = () => {
   return (
     <div className="container">
       <Box mt={4}>
-        <Grid container>
+        <Grid container spacing={5}>
           <Grid item xs={12} sm={4} md={4} lg={4}>
             <Box padding={1}>
               <Skeleton
@@ -28,25 +28,28 @@ const ProductDetailSkeleton = () => {
               <Skeleton
                 variant="rect"
                 width="100%"
-                height={200}
+                height={50}
                 animation="wave"
+                className="mb-3"
               />
-              <Skeleton width="60%" />
-              <div className="d-flex justify-content-between align-items-center">
+              <Skeleton width="100%" />
+              <Skeleton width="100%" />
+              <Skeleton width="90%" className="mb-3" />
+              <div className="d-flex justify-content-start align-items-center">
                 <Skeleton
-                  variant="circle"
-                  width={40}
+                  variant="rect"
+                  width={200}
                   height={40}
                   animation="wave"
                 />
-                <Skeleton width="95%" height={50} animation="wave" />
+                <Skeleton
+                  variant="rect"
+                  width={200}
+                  height={40}
+                  animation="wave"
+                  className="ml-5"
+                />
               </div>
-              <Skeleton
-                variant="rect"
-                width="100%"
-                height={225}
-                animation="wave"
-              />
             </Box>
           </Grid>
         </Grid>

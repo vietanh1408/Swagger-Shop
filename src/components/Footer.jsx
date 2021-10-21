@@ -41,7 +41,7 @@ function Footer() {
           <div className="col">
             <div className="footer-logo d-flex justify-content-center my-5">
               <img
-                className="w-100"
+                className="footer-payment"
                 src="http://demo.posthemes.com/pos_ecolife_decoration/img/cms/payment.png"
                 alt="footer-logo"
               ></img>
